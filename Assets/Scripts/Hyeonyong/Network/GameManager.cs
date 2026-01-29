@@ -216,10 +216,10 @@ public class GameManager : PhotonSingleton<GameManager>
         if (PhotonNetwork.CurrentRoom.GetProps<bool>(NetworkProperties.ONROOM))
             return;
 
-        if (LocalPlayer.GetComponent<PlayableCharacter>().GameCamera.ReturnTarget() == null)
-        {
-            LocalPlayer.GetComponent<PlayableCharacter>().ChangeCameraTarget();
-        }
+        //if (LocalPlayer.GetComponent<PlayableCharacter>().GameCamera.ReturnTarget() == null)
+        //{
+        //    LocalPlayer.GetComponent<PlayableCharacter>().ChangeCameraTarget();
+        //}
 
         if (PhotonNetwork.IsMasterClient)
         {
