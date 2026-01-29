@@ -13,6 +13,8 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 using Unity.VisualScripting;
+using JetBrains.Annotations;
+using Photon.Voice.PUN;
 public class GameManager : PhotonSingleton<GameManager>
 {
     public Dictionary<InventoryDataSO, int> TemporaryPlayerInventory = new Dictionary<InventoryDataSO, int>();
@@ -25,7 +27,8 @@ public class GameManager : PhotonSingleton<GameManager>
     public InventoryWheelLogic InventoryWheel { get { return _inventoryWheelLogic; } set { _inventoryWheelLogic = value; } }
 
     [SerializeField] int needMoneyCount = 5;
-
+    [SerializeField] string[] sceneName;//라운드별 씬 네임 작성
+    [SerializeField] int maxRound=2;
     void Start()//씬이 너무 빨리 불러와져서 스타트가 room 들어가기 전에 호출되는 것이 문제임
     {
         if (LocalPlayer == null)
@@ -281,7 +284,8 @@ public class GameManager : PhotonSingleton<GameManager>
                 }
                 if (PhotonNetwork.IsMasterClient)
                 {
-                    PhotonNetwork.LoadLevel("GameMapOne");
+                    PhotonNetwork.LoadLevel(sceneName[maxRound-curRound]);
+                    //PhotonNetwork.LoadLevel("GameMapOne");
                     PhotonNetwork.CurrentRoom.SetProps(NetworkProperties.GAMEROUND, curRound);
                 }
             }
@@ -323,7 +327,7 @@ public class GameManager : PhotonSingleton<GameManager>
             return;
         PhotonNetwork.CurrentRoom.SetProps(NetworkProperties.MONEYCOUNT, 0);
         PhotonNetwork.CurrentRoom.SetProps(NetworkProperties.ONSTORE, true);
-        PhotonNetwork.CurrentRoom.SetProps(NetworkProperties.GAMEROUND, 2);
+        PhotonNetwork.CurrentRoom.SetProps(NetworkProperties.GAMEROUND, maxRound);
         PhotonNetwork.CurrentRoom.SetProps(NetworkProperties.PLAYERCOUNT, PhotonNetwork.CurrentRoom.PlayerCount);
     }
 

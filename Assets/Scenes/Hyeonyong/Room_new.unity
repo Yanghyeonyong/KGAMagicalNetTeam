@@ -23485,6 +23485,10 @@ MonoBehaviour:
   playerPrefab: {fileID: 7940719953895527930, guid: f8e4a1f019587374893ff143fd1371ae, type: 3}
   _inventoryWheelLogic: {fileID: 313122468}
   needMoneyCount: 5
+  sceneName:
+  - GameMapOne
+  - GameMapOne
+  maxRound: 2
 --- !u!4 &1596086092
 Transform:
   m_ObjectHideFlags: 0
