@@ -85,17 +85,21 @@ public class Tornado : MonoBehaviourPun
 
     private bool IsValidTarget(Collider other)
     {
-        if (!other.TryGetComponent<PhotonView>(out PhotonView targetPV))
+        PhotonView targetPV = other.GetComponentInParent<PhotonView>();
+
+        if (targetPV == null)
             return true;
 
         if (targetPV.OwnerActorNr == shooterID)
             return false;
 
-        if (other.CompareTag("Player"))
+        if (targetPV.CompareTag("Player") || other.CompareTag("Player"))
         {
             bool isFriendlyFireOn = PhotonNetwork.CurrentRoom.GetProps<bool>(NetworkProperties.FRIENDLYFIRE);
 
             if (isFriendlyFireOn) return true;
+
+            return false;
         }
 
         return true;
