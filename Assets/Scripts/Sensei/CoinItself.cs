@@ -14,12 +14,14 @@ public class CoinItself : MonoBehaviourPunCallbacks
 
         if (photonView.IsMine)
         {
-            PhotonNetwork.Destroy(this.gameObject);
+            
+                PhotonNetwork.Destroy(this.gameObject);
+            
         }
         else
         {
             //PhotonView photonView = PhotonView.Get(this);
-            photonView.RPC("RPC_Destroy", RpcTarget.MasterClient);
+            photonView.RPC("RPC_Destroy", photonView.Owner);
         }
 
     }
@@ -28,29 +30,30 @@ public class CoinItself : MonoBehaviourPunCallbacks
     [PunRPC]
     public void RPC_Destroy()
     {
-        if (this.gameObject != null)
+        if (this.gameObject != null && photonView.IsMine)
         {
-            photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
+                PhotonNetwork.Destroy(this.gameObject);
+            //photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
             
             
-            StartCoroutine(WaitToDestroyCoin());
+            //StartCoroutine(WaitToDestroyCoin());
             //PhotonNetwork.Destroy(this.gameObject);
         }
     }
 
 
     //Coroutine WaitToDestroy;
-    IEnumerator WaitToDestroyCoin()
-    {
-        yield return new WaitUntil(() => photonView.IsMine);
+    //IEnumerator WaitToDestroyCoin()
+    //{
+    //    yield return new WaitUntil(() => photonView.IsMine);
 
-        if (this.gameObject != null)
-        {
-            PhotonNetwork.Destroy(this.gameObject);
-        }
-        //WaitToDestroy = null;
+    //    if (this.gameObject != null)
+    //    {
+    //        PhotonNetwork.Destroy(this.gameObject);
+    //    }
+    //    //WaitToDestroy = null;
 
-    }
+    //}
 
     public void DropCoin(Vector3 spawnPos, Vector3 targetPos)
     {
