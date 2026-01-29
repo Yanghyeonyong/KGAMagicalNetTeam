@@ -156,6 +156,8 @@ public class GameManager : PhotonSingleton<GameManager>
             Debug.Log("팀 재화 표시 실패");
 
         }
+
+        needMoneyCount = RoundManager.Instance.RequireMoenyCount;
     }
 
     public void PlusMoneyCount()
