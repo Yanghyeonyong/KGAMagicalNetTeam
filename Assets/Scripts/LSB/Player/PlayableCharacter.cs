@@ -294,15 +294,15 @@ public class PlayableCharacter : MonoBehaviourPun
 
                 if (InteractState == null)
                 {
-                    // InteractState = new PlayerAssassinateState(this, StateMachine);
+                    InteractState = new PlayerAssassinateState(this, StateMachine);
                 }
 
                 // 상호작용 대상이 다를 경우 갱신
-                //if (!InteractState.receivers.Contains(interact))
-                //{
-                //    InteractState.SetTarget(interact);
-                //    InteractState.Init(interact.interactionData);
-                //}
+                if (!InteractState.receivers.Contains(interact))
+                {
+                    InteractState.SetTarget(interact);
+                    InteractState.Init(interact.interactionData);
+                }
             }
             else
             {
