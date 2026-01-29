@@ -214,6 +214,11 @@ public class GameManager : PhotonSingleton<GameManager>
     {
         Debug.Log(otherPlayer.NickName + "님이 게임을 떠났습니다.");
 
+        if (LocalPlayer.GetComponent<PlayableCharacter>().GameCamera.ReturnTarget() == null)
+        {
+            LocalPlayer.GetComponent<PlayableCharacter>().ChangeCameraTarget();
+        }
+
         if (PhotonNetwork.IsMasterClient)
         {
             if(PhotonNetwork.CurrentRoom.GetProps<bool>(NetworkProperties.ONROOM))

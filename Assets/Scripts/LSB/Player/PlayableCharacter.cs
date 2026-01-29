@@ -457,12 +457,8 @@ public class PlayableCharacter : MonoBehaviourPun, IInteractable
 
     public void ChangeCameraOnDie()
     {
-        photonView.RPC(nameof(ChangeCameraOnDie_RPC), RpcTarget.Others);
-    }
-
-    [PunRPC]
-    public void ChangeCameraOnDie_RPC()
-    {
+        if (PhotonNetwork.LocalPlayer.GetProps<bool>(NetworkProperties.PLAYER_ALIVE))
+            return;
         ThirdPersonCamera cam = GameObject.FindAnyObjectByType<ThirdPersonCamera>();
 
 
