@@ -1349,6 +1349,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Citizen_Female (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8422139059911836487, guid: 8c0fc1456fcc5e0418bf7c182967ef84, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3468,6 +3472,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GarrisonGuard
       objectReference: {fileID: 0}
+    - target: {fileID: 1515497200967369440, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2588388420038173122, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
       propertyPath: sceneViewId
       value: 26
@@ -3478,7 +3486,7 @@ PrefabInstance:
       objectReference: {fileID: 8923423406271609733}
     - target: {fileID: 7246426161177343077, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -109.38
+      value: -110.13
       objectReference: {fileID: 0}
     - target: {fileID: 7246426161177343077, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6859,6 +6867,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin_Gold_Skull Sensei 2 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8148542576127889976, guid: ec3a96e81fd570b438d8810469ace49a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8262163734282227047, guid: ec3a96e81fd570b438d8810469ace49a, type: 3}
       propertyPath: sceneViewId
       value: 34
@@ -8214,6 +8226,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Citizen_Male
       objectReference: {fileID: 0}
+    - target: {fileID: 338304112930713174, guid: b52e7884bcc934f46881b012111b5847, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2540926614430077418, guid: b52e7884bcc934f46881b012111b5847, type: 3}
       propertyPath: sceneViewId
       value: 6
@@ -9102,6 +9118,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Citizen_Female (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8422139059911836487, guid: 8c0fc1456fcc5e0418bf7c182967ef84, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9900,6 +9920,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Citizen_Male (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 338304112930713174, guid: b52e7884bcc934f46881b012111b5847, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2540926614430077418, guid: b52e7884bcc934f46881b012111b5847, type: 3}
       propertyPath: sceneViewId
       value: 10
@@ -10293,6 +10317,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Citizen_Male (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 338304112930713174, guid: b52e7884bcc934f46881b012111b5847, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2540926614430077418, guid: b52e7884bcc934f46881b012111b5847, type: 3}
       propertyPath: sceneViewId
       value: 12
@@ -10534,6 +10562,10 @@ PrefabInstance:
     - target: {fileID: 8422139059911836487, guid: 8c0fc1456fcc5e0418bf7c182967ef84, type: 3}
       propertyPath: m_Name
       value: Citizen_Female (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8422139059911836487, guid: 8c0fc1456fcc5e0418bf7c182967ef84, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15128,7 +15160,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.083333336
+  m_VoxelSize: 0.06666667
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 71e7e056b0480444b8d227fb377aa6a5, type: 2}
   m_BuildHeightMesh: 1
@@ -15491,6 +15523,10 @@ PrefabInstance:
     - target: {fileID: 338304112930713174, guid: b52e7884bcc934f46881b012111b5847, type: 3}
       propertyPath: m_Name
       value: Citizen_Male (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 338304112930713174, guid: b52e7884bcc934f46881b012111b5847, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2540926614430077418, guid: b52e7884bcc934f46881b012111b5847, type: 3}
       propertyPath: sceneViewId
@@ -17540,6 +17576,10 @@ PrefabInstance:
     - target: {fileID: 1515497200967369440, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
       propertyPath: m_Name
       value: GarrisonGuard (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1515497200967369440, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2588388420038173122, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
       propertyPath: sceneViewId
@@ -22059,6 +22099,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin_Gold_Skull Sensei 2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8148542576127889976, guid: ec3a96e81fd570b438d8810469ace49a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8262163734282227047, guid: ec3a96e81fd570b438d8810469ace49a, type: 3}
       propertyPath: sceneViewId
       value: 33
@@ -23673,6 +23717,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GarrisonGuard (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1515497200967369440, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2588388420038173122, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
       propertyPath: sceneViewId
       value: 31
@@ -24504,6 +24552,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GarrisonGuard (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1515497200967369440, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2588388420038173122, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
       propertyPath: sceneViewId
       value: 27
@@ -24518,7 +24570,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7246426161177343077, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.585
+      value: 5.8
       objectReference: {fileID: 0}
     - target: {fileID: 7246426161177343077, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -26484,6 +26536,10 @@ PrefabInstance:
     - target: {fileID: 4320111795954377594, guid: dc3e65c95aab50a49912b7b878674752, type: 3}
       propertyPath: m_Name
       value: Stone_Tower IndestructibleSensei
+      objectReference: {fileID: 0}
+    - target: {fileID: 4320111795954377594, guid: dc3e65c95aab50a49912b7b878674752, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7451236960404495255, guid: dc3e65c95aab50a49912b7b878674752, type: 3}
       propertyPath: m_LocalPosition.x
@@ -29457,6 +29513,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Citizen_Female
       objectReference: {fileID: 0}
+    - target: {fileID: 8422139059911836487, guid: 8c0fc1456fcc5e0418bf7c182967ef84, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -31613,6 +31673,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MinimapCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 5946832372379730628, guid: f73bb3af01587974a9e550d644460c8b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -33270,6 +33334,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Citizen_Female (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8422139059911836487, guid: 8c0fc1456fcc5e0418bf7c182967ef84, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -33461,6 +33529,75 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3012958251665333551, guid: 6fdfb3ef23c2c0c4d805d0ff4ba65101, type: 3}
   m_PrefabInstance: {fileID: 1183131735}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1183260325
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1515497200967369440, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
+      propertyPath: m_Name
+      value: GarrisonGuard (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1515497200967369440, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2588388420038173122, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
+      propertyPath: sceneViewId
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076037262703857639, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
+      propertyPath: garrisonCenter
+      value: 
+      objectReference: {fileID: 8923423406271609733}
+    - target: {fileID: 7246426161177343077, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -106.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 7246426161177343077, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7246426161177343077, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 104.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 7246426161177343077, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7246426161177343077, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7246426161177343077, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7246426161177343077, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7246426161177343077, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7246426161177343077, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7246426161177343077, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
 --- !u!1001 &1186987270
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38101,6 +38238,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: tree_portal_pink
       objectReference: {fileID: 0}
+    - target: {fileID: 3682593085651455145, guid: 2a002c714f14b934faa10b3db24dce55, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4057992075610740243, guid: 2a002c714f14b934faa10b3db24dce55, type: 3}
       propertyPath: m_LocalPosition.x
       value: 110.88
@@ -41374,6 +41515,10 @@ PrefabInstance:
     - target: {fileID: 338304112930713174, guid: b52e7884bcc934f46881b012111b5847, type: 3}
       propertyPath: m_Name
       value: Citizen_Male (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 338304112930713174, guid: b52e7884bcc934f46881b012111b5847, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2540926614430077418, guid: b52e7884bcc934f46881b012111b5847, type: 3}
       propertyPath: sceneViewId
@@ -45173,6 +45318,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin_Gold_Skull Sensei 2 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8148542576127889976, guid: ec3a96e81fd570b438d8810469ace49a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8262163734282227047, guid: ec3a96e81fd570b438d8810469ace49a, type: 3}
       propertyPath: sceneViewId
       value: 35
@@ -46349,6 +46498,10 @@ PrefabInstance:
     - target: {fileID: 5373470304330891647, guid: 9c69b5e0b0750fa4098c1bf5d55303b9, type: 3}
       propertyPath: m_Name
       value: pile_of_leaves_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 5373470304330891647, guid: 9c69b5e0b0750fa4098c1bf5d55303b9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -48943,7 +49096,8 @@ MonoBehaviour:
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5cbc55d6a71e78847921981ef6fa9060, type: 2}
   m_sharedMaterial: {fileID: -1346769110202542225, guid: 5cbc55d6a71e78847921981ef6fa9060, type: 2}
-  m_fontSharedMaterials: []
+  m_fontSharedMaterials:
+  - {fileID: -1346769110202542225, guid: 5cbc55d6a71e78847921981ef6fa9060, type: 2}
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
@@ -51012,6 +51166,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Archway_1_Brown
       objectReference: {fileID: 0}
+    - target: {fileID: 6954222893221153655, guid: 580f87de1ee298041816a8d905c97aa4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7766893293876957645, guid: 580f87de1ee298041816a8d905c97aa4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.824782
@@ -51192,6 +51350,10 @@ PrefabInstance:
     - target: {fileID: 8148542576127889976, guid: ec3a96e81fd570b438d8810469ace49a, type: 3}
       propertyPath: m_Name
       value: Coin_Gold_Skull Sensei 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148542576127889976, guid: ec3a96e81fd570b438d8810469ace49a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8262163734282227047, guid: ec3a96e81fd570b438d8810469ace49a, type: 3}
       propertyPath: sceneViewId
@@ -52050,6 +52212,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GarrisonGuard (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1515497200967369440, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2588388420038173122, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
       propertyPath: sceneViewId
       value: 30
@@ -52570,6 +52736,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GarrisonGuard (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1515497200967369440, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2588388420038173122, guid: eb016f7481bde8c498e38a642459f55e, type: 3}
       propertyPath: sceneViewId
       value: 29
@@ -52944,6 +53114,10 @@ PrefabInstance:
     - target: {fileID: 8148542576127889976, guid: ec3a96e81fd570b438d8810469ace49a, type: 3}
       propertyPath: m_Name
       value: Coin_Gold_Skull Sensei 2 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8148542576127889976, guid: ec3a96e81fd570b438d8810469ace49a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8262163734282227047, guid: ec3a96e81fd570b438d8810469ace49a, type: 3}
       propertyPath: sceneViewId
@@ -59933,13 +60107,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Garrison
       objectReference: {fileID: 0}
+    - target: {fileID: 7299769525932648047, guid: cc0915febfb36fd48842a933475524d9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8503609649120777012, guid: cc0915febfb36fd48842a933475524d9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8503609649120777012, guid: cc0915febfb36fd48842a933475524d9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8503609649120777012, guid: cc0915febfb36fd48842a933475524d9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4.3
+      objectReference: {fileID: 0}
     - target: {fileID: 8503609649120777012, guid: cc0915febfb36fd48842a933475524d9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -96
       objectReference: {fileID: 0}
     - target: {fileID: 8503609649120777012, guid: cc0915febfb36fd48842a933475524d9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.6
+      value: 6.58
       objectReference: {fileID: 0}
     - target: {fileID: 8503609649120777012, guid: cc0915febfb36fd48842a933475524d9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -63045,17 +63235,6 @@ SceneRoots:
   - {fileID: 198753641}
   - {fileID: 2013082709}
   - {fileID: 502191234}
-  - {fileID: 2069912634}
-  - {fileID: 1043844874}
-  - {fileID: 65088598}
-  - {fileID: 2129551945}
-  - {fileID: 1610004670}
-  - {fileID: 719610540}
-  - {fileID: 746249037}
-  - {fileID: 1332188645}
-  - {fileID: 57004489}
-  - {fileID: 910425731}
-  - {fileID: 536635070}
   - {fileID: 1463418897}
   - {fileID: 1939487845}
   - {fileID: 1030147166}
@@ -63066,7 +63245,24 @@ SceneRoots:
   - {fileID: 1192530924}
   - {fileID: 69406216}
   - {fileID: 689380936}
+  - {fileID: 1043844874}
+  - {fileID: 65088598}
+  - {fileID: 2129551945}
+  - {fileID: 1610004670}
+  - {fileID: 719610540}
+  - {fileID: 235416756}
+  - {fileID: 316702597}
+  - {fileID: 917757586}
+  - {fileID: 2007374131}
   - {fileID: 1115323548}
+  - {fileID: 2069912634}
+  - {fileID: 8923423406271609732}
+  - {fileID: 746249037}
+  - {fileID: 600208083}
+  - {fileID: 1332188645}
+  - {fileID: 57004489}
+  - {fileID: 910425731}
+  - {fileID: 536635070}
   - {fileID: 1014555566}
   - {fileID: 264785680}
   - {fileID: 39496503}
@@ -63077,19 +63273,14 @@ SceneRoots:
   - {fileID: 334123584}
   - {fileID: 1170759433}
   - {fileID: 520339275}
-  - {fileID: 235416756}
-  - {fileID: 316702597}
-  - {fileID: 485132455}
-  - {fileID: 1243752536}
-  - {fileID: 600208083}
-  - {fileID: 1823170231}
   - {fileID: 1658887664}
-  - {fileID: 917757586}
-  - {fileID: 2007374131}
-  - {fileID: 8923423406271609732}
+  - {fileID: 1823170231}
+  - {fileID: 1243752536}
+  - {fileID: 485132455}
   - {fileID: 99128102}
   - {fileID: 821124411}
   - {fileID: 1912117747}
+  - {fileID: 1183260325}
   - {fileID: 1867205879}
   - {fileID: 797259871}
   - {fileID: 590124138}
