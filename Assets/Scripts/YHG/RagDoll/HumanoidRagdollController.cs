@@ -41,7 +41,6 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
     private void Update()
     {
         if (baseAI != null && baseAI.CurrentHP <= 0) return;
-
         if (isRecovering) return;
 
         //일단 대기
@@ -58,13 +57,13 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
     //외부용 피격 메서드
     public void ApplyRagdoll(Vector3 force)
     {
-        if (isRagdollActive) return; 
+        if (isRagdollActive) return;
         //이미 다운된 상태면 무시 (누워있어도 계속 날아가게 처리?? 일단 보류)
         //무콤 필요하면 주석해제 하고 테스트
 
         photonView.RPC(nameof(RpcActivateRagdoll), RpcTarget.All, force);
     }
-     
+
     //피격 RPC
     [PunRPC]
     private void RpcActivateRagdoll(Vector3 force)
@@ -87,8 +86,8 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
 
             if (hipsRigid != null)
             {
-            //임펄스가 기획의도 상 베스트일 듯
-            hipsRigid.AddForce(force, ForceMode.Impulse);
+                //임펄스가 기획의도 상 베스트일 듯
+                hipsRigid.AddForce(force, ForceMode.Impulse);
             }
             else
             {
@@ -110,7 +109,7 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
         Transform hips = animator.GetBoneTransform(HumanBodyBones.Hips);
         if (hips == null)
         {
-            Debug.Log("테스트 겟본트랜스폼 없음, 나중에 로그 제거"); 
+            Debug.Log("테스트 겟본트랜스폼 없음, 나중에 로그 제거");
             return; //방어 코드
         }
         Rigidbody hipsRigid = hips.GetComponent<Rigidbody>();
@@ -128,7 +127,7 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
             {
                 getUpPos = hit.position;
             }
-            
+
             //일어나는 중
             isRecovering = true;
 
@@ -154,25 +153,32 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
         //애니메이션 재생 대기
         yield return CoroutineManager.waitForSeconds(getUpAnimationDuration);
 
+        transform.position = pos;
+
+        yield return null;
+
         if (animator != null)
         {
             animator.enabled = true;
         }
 
-        if ((agent != null))
+        if (agent != null)
         {
-            if (agent.Warp(pos))
+            agent.enabled = true;
+            agent.isStopped = false;
+
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(pos, out hit, 3.0f, NavMesh.AllAreas))
             {
-                agent.enabled = true;
-                agent.isStopped = false;
-                agent.updatePosition = true;
-                agent.updateRotation = true;
+                agent.Warp(hit.position);
             }
             else
             {
-                agent.enabled = true;
-                agent.isStopped = false;
+                agent.Warp(pos);
             }
+
+            agent.updatePosition = true;
+            agent.updateRotation = true;
         }
 
         //시민 경비 리커버리 시 행동 수행(방장만)
@@ -183,13 +189,13 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
         else
         {
             baseAI.IsKnockedDown = false;
-        } 
+        }
         isRagdollActive = false;
     }
 
     public void OnMagicInteract(GameObject magic, MagicDataSO data, int attackerActorNr)
     {
-        switch(data.magicType)
+        switch (data.magicType)
         {
             case MagicType.Fireball:
                 FireballReaction(magic, data, attackerActorNr);
