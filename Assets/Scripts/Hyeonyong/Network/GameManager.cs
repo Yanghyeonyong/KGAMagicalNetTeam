@@ -219,10 +219,11 @@ public class GameManager : PhotonSingleton<GameManager>
         if (PhotonNetwork.CurrentRoom.GetProps<bool>(NetworkProperties.ONROOM))
             return;
 
-        Transform targetTransform = LocalPlayer.GetComponent<PlayableCharacter>().GameCamera.ReturnTarget();
-        if (!targetTransform)
+        //내가 관람중인 플레이어 사망시 실행할 코드
+        PlayableCharacter player = LocalPlayer.GetComponent<PlayableCharacter>();
+        if (otherPlayer.ActorNumber == player.CheckPlayerActorNumByCameraIndex[player.CurCameraIndex])
         {
-            LocalPlayer.GetComponent<PlayableCharacter>().ChangeCameraTarget();
+            player.ChangeCameraTarget();
         }
 
         if (PhotonNetwork.IsMasterClient)

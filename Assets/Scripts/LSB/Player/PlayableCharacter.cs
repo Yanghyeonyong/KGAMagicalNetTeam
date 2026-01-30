@@ -40,8 +40,11 @@ public class PlayableCharacter : MonoBehaviourPun
     [SerializeField] private float checkDistance = 1f;      // 260122 신현섭: 상호작용 체크 거리
 
     [Header("Camera Setting")]
-    [SerializeField] private int cameraIndex = -1;
+    [SerializeField] public int cameraIndex = -1;
     [SerializeField] private int curCameraIndex = -1;
+    public int CurCameraIndex => curCameraIndex;
+    [SerializeField] private Dictionary<int,int> checkPlayerActorNumBycameraIndex= new Dictionary<int,int>();// key : cameraIndex value : playerNum
+    public Dictionary<int, int> CheckPlayerActorNumByCameraIndex => checkPlayerActorNumBycameraIndex;
 
     public enum MoveDir { Front, Back, Left, Right }
 
@@ -385,8 +388,12 @@ public class PlayableCharacter : MonoBehaviourPun
 
             foreach (PlayableCharacter p in otherPlayer)
             {
-                if (!p.GetComponent<PhotonView>().IsMine)
+                PhotonView pv = p.GetComponent<PhotonView>();
+                if (!pv.IsMine)
+                {
                     otherPlayerTransform.Add(p.transform);
+                    checkPlayerActorNumBycameraIndex[otherPlayerTransform.Count - 1] = pv.OwnerActorNr;
+                }
             }
         }
         //3. 특정 버튼 클릭 시 다른 플레이어 확인 가능 여기서 액션 버튼 +=으로 넣고 파괴시 빼자
