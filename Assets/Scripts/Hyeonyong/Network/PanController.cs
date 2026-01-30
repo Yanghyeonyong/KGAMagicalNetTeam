@@ -19,6 +19,7 @@ public class PanController : MonoBehaviourPunCallbacks, IMagicInteractable, IDam
 
     Coroutine damageCoroutine_Color;
     Coroutine damageCoroutine_Noise;
+    Coroutine damageCoroutine_Die;
     [SerializeField] float noiseStrength = 3f;
     [SerializeField] float noiseDelay = 0.01f;
 
@@ -94,12 +95,19 @@ public class PanController : MonoBehaviourPunCallbacks, IMagicInteractable, IDam
                 PanHpBanner.SetActive(false);
             if (gameObject != null)
             {
-                gameObject.SetActive(false);
+                damageCoroutine_Die = StartCoroutine(CheckDieCoroutine());
                 return;
             }
         }
     }
+    IEnumerator CheckDieCoroutine()
+    {
+        yield return new WaitUntil(()=>damageCoroutine_Color == null);
+        yield return new WaitUntil(()=>damageCoroutine_Noise == null);
 
+        gameObject.SetActive(false);
+        damageCoroutine_Die = null;
+    }
     void SetFryingPanHP(float curHp)
     {
         if (PhotonNetwork.IsMasterClient)
@@ -115,6 +123,8 @@ public class PanController : MonoBehaviourPunCallbacks, IMagicInteractable, IDam
             StopCoroutine(damageCoroutine_Color);
         if(damageCoroutine_Noise!=null)
             StopCoroutine(damageCoroutine_Noise);
+        if (damageCoroutine_Die != null)
+            StopCoroutine(damageCoroutine_Die);
     }
 
     float GetFryingPanHP()
