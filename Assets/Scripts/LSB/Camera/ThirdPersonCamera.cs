@@ -1,52 +1,84 @@
 using Photon.Pun;
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class ThirdPersonCamera : MonoBehaviour
 {
-    [Header("인풋 액션")]
-    [SerializeField] private InputActionReference lookAction;
+    [SerializeField] private CinemachineCamera cinemachineCamera;
+    [SerializeField] private CinemachineInputAxisController axisController;
+
+    private CinemachineInputAxisController.Controller xAxis;
+    private CinemachineInputAxisController.Controller yAxis;
 
     [Header("추적 대상")]
     [SerializeField] private Transform target; // 추적할 플레이어
 
-    [Header("위치 설정")]
-    [SerializeField] private float distance = 5.0f;
-    [SerializeField] private Vector2 pitchLimits = new Vector2(-20, 80);
-
-    [Header("오프셋 설정")]
-    [SerializeField] private Vector3 Offset = new Vector3(1f, 1.5f, 0f);
-
     [Header("감도 설정")]
-    [SerializeField] private float sensitivity = 50.0f;
+    [SerializeField] private float sensitivity = 1f;
     public float Sensitivity
     {
-        get => sensitivity;
-        set => sensitivity = value;
+        get { return  sensitivity; }
+        set
+        {
+            sensitivity = Mathf.Max(value, 1f);
+        }
     }
 
     [SerializeField] private bool invertX = false;
     public bool InvertX
     {
-        get => invertX;
-        set => invertX = value;
+        get { return invertX; }
+        set
+        {
+            if (xAxis != null)
+            {
+                xAxis.Input.Gain = !InvertX ? sensitivity : -sensitivity;
+            }
+        }
     }
 
     [SerializeField] private bool invertY = false;
     public bool InvertY
     {
-        get => invertY;
-        set => invertY = value;
+        get { return invertY; }
+        set
+        {
+            if (yAxis != null)
+            {
+                yAxis.Input.Gain = !invertY ? -sensitivity : sensitivity;
+            }
+        }
     }
-
-    private float currentX = 0.0f;
-    private float currentY = 0.0f;
 
     public Transform CameraTransform { get; private set; }
 
     private void Awake()
     {
+        if (cinemachineCamera == null)
+            TryGetComponent(out cinemachineCamera);
+
+        if (axisController == null)
+            TryGetComponent(out axisController);
+
+
+        if(axisController != null)
+        {
+            foreach(var control in axisController.Controllers)
+            {
+                if(control.Name == "Look Orbit X" || control.Name == "LookOrbitX")
+                {
+                    xAxis = control;
+                }
+                else if(control.Name == "Look Orbit Y" || control.Name == "LookOrbitY")
+                {
+                    yAxis = control;
+                }
+            }
+        }
+
         CameraTransform = this.transform;
     }
 
@@ -60,12 +92,11 @@ public class ThirdPersonCamera : MonoBehaviour
 
     private void OnEnable()
     {
-        if (lookAction != null) lookAction.action.Enable();
+
     }
 
     private void OnDisable()
     {
-        if (lookAction != null) lookAction.action.Disable();
         if (GameManager.Instance != null)
         {
             UIManager.Instance.onOpenUI -= CheckDisable;
@@ -93,17 +124,17 @@ public class ThirdPersonCamera : MonoBehaviour
     /// <param name="isActive">true로 설정하면 시점 제어 기능이 활성화되고 커서가 잠기며, false로 설정하면 시점 제어 기능이 비활성화되고 커서가 잠금 해제됩니다.</param>
     public void SetControl(bool isActive)
     {
-        if (lookAction == null || lookAction.action == null) return;
+        if (axisController == null) return;
 
         if (isActive)
         {
-            lookAction.action.Enable();
+            axisController.enabled = true;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
         else
         {
-            lookAction.action.Disable();
+            axisController.enabled = false;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
@@ -116,59 +147,11 @@ public class ThirdPersonCamera : MonoBehaviour
     public void SetTarget(Transform newTarget)
     {
         target = newTarget;
-
-        currentX = target.eulerAngles.y;
-        currentY = 10f;
+        cinemachineCamera.Target.TrackingTarget = target;
     }
 
     public Transform ReturnTarget()
     {
         return target;
-    }
-
-    private void LateUpdate()
-    {
-        if (!target) return;
-        if (lookAction == null) return;
-
-        // 마우스 움직임 값
-        Vector2 inputDelta = lookAction.action.ReadValue<Vector2>();
-
-        // 마우스 감도 값 반영
-        float deltaX = inputDelta.x * sensitivity * Time.deltaTime;
-        float deltaY = inputDelta.y * sensitivity * Time.deltaTime;
-
-        // 반전 옵션 체크
-        InvertMouse(deltaX, deltaY);
-
-        // 최소, 최대 y값 설정
-        currentY = Mathf.Clamp(currentY, pitchLimits.x, pitchLimits.y);
-
-        // 쿼터니언 회전값 계산
-        Quaternion rotation = Quaternion.Euler(currentY, currentX, 0);
-
-        // 오프셋을 적용한 회전값 계산
-        Vector3 rotatedOffset = rotation * Offset;
-
-        // 포지션 설정 거리랑 각도 위치 오프셋 반영
-        Vector3 position = target.position + rotatedOffset - (rotation * Vector3.forward * distance);
-
-        // 각도 포지션 반영
-        transform.rotation = rotation;
-        transform.position = position;
-    }
-
-    /// <summary>
-    /// 마우스 x, y 반전옵션 체크용
-    /// </summary>
-    /// <param name="deltaX"></param>
-    /// <param name="deltaY"></param>
-    private void InvertMouse(float deltaX, float deltaY)
-    {
-        if (invertX) currentX -= deltaX;
-        else currentX += deltaX;
-
-        if (invertY) currentY += deltaY;
-        else currentY -= deltaY;
     }
 }
