@@ -70,6 +70,8 @@ public class Tornado : MonoBehaviourPun
 
         if (!IsValidTarget(other))
             return;
+        if (!ChunkNodeCheck(other))
+            return;
         if (!other.TryGetComponent<IMagicInteractable>(out IMagicInteractable obj))
             return;
         if (!other.TryGetComponent<Rigidbody>(out Rigidbody rb))
@@ -87,14 +89,9 @@ public class Tornado : MonoBehaviourPun
     {
         PhotonView targetPV = other.GetComponentInParent<PhotonView>();
 
-        if (other.GetComponent<ChunkNode>().IsIndestructible)
-            return false;
+        if (targetPV == null) return true;
+        if (targetPV.OwnerActorNr == shooterID) return false;
 
-        if (targetPV == null)
-            return true;
-
-        if (targetPV.OwnerActorNr == shooterID)
-            return false;
 
         if (targetPV.CompareTag("Player") || other.CompareTag("Player"))
         {
@@ -104,6 +101,15 @@ public class Tornado : MonoBehaviourPun
 
             return false;
         }
+
+        return true;
+    }
+
+    private bool ChunkNodeCheck(Collider other)
+    {
+        ChunkNode node = other.GetComponent<ChunkNode>();
+        if (node == null) return true;
+        else if (node.IsIndestructible) return false;
 
         return true;
     }
