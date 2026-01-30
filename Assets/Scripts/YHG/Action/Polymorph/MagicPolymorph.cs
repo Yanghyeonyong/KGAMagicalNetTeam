@@ -5,9 +5,9 @@ public class MagicPolymorph : MagicAction
 {
     private PolymorphMagicSO polymorphData;
 
-    public MagicPolymorph(MagicDataSO data) : base(data)
+    public MagicPolymorph(PolymorphMagicSO data) : base(data)
     {
-        //this.polymorphData = data;
+        this.polymorphData = data;
     }
 
     public override void OnCast(Vector3 spawnPos, Vector3 targetPos, bool isLeftHand, int shooterID)
@@ -26,7 +26,7 @@ public class MagicPolymorph : MagicAction
             PolymorphProjectile projectile = obj.GetComponent<PolymorphProjectile>();
             if (projectile != null)
             {
-                //projectile.SetShooterActorNumber(shooterID);
+                projectile.SetShooterActorNumber(shooterID);
             }
         }
     }

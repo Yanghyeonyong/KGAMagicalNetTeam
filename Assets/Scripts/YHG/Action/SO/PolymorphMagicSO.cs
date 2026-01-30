@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Fireball", menuName = "Game/Polymorph")]
+[CreateAssetMenu(fileName = "New Polymorph", menuName = "Game/Polymorph")]
 public class PolymorphMagicSO : MagicDataSO
 {
     public float projectileSpeed = 15f;
