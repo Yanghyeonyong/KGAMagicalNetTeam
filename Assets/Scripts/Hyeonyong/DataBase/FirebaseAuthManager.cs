@@ -152,14 +152,13 @@ public class FirebaseAuthManager : Singleton<FirebaseAuthManager>
     {
         //해당 방법은 이메일 열거 보호를 해제해야 하므로 제외 <- 우회하려고 회원가입 과정, 로그인 과정 중 발생하는 오류 코드 까지 사용해 보았으나 실패
 
-        Debug.Log("검사 시작");
         var task = auth.FetchProvidersForEmailAsync(email);
         yield return new WaitUntil(() => task.IsCompleted);
 
         bool checkEmail = task.Result.Any();
-        Debug.Log("검사 결과 " + checkEmail);
-        loginButton.gameObject.SetActive(checkEmail);
-        registerButton.gameObject.SetActive(!checkEmail);
+
+        loginButton?.gameObject.SetActive(checkEmail);
+        registerButton?.gameObject.SetActive(!checkEmail);
         nickField.interactable = !checkEmail;
         if (nickField.interactable == false)
         {
