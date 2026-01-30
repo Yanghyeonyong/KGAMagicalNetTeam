@@ -221,9 +221,21 @@ public class GameManager : PhotonSingleton<GameManager>
 
         //내가 관람중인 플레이어 사망시 실행할 코드
         PlayableCharacter player = LocalPlayer.GetComponent<PlayableCharacter>();
-        if (otherPlayer.ActorNumber == player.CheckPlayerActorNumByCameraIndex[player.CurCameraIndex])
+        if (player.CheckPlayerActorNumByCameraIndex.ContainsKey(player.CurCameraIndex))
         {
-            player.ChangeCameraTarget();
+            if (otherPlayer.ActorNumber == player.CheckPlayerActorNumByCameraIndex[player.CurCameraIndex])
+            {
+                player.ChangeCameraTarget();
+                Debug.Log("시점 전환 : 성공");
+            }
+            else
+            {
+                Debug.Log("시점 전환 : 키 값이 다르다 "+ otherPlayer.ActorNumber+" vs "+ player.CheckPlayerActorNumByCameraIndex[player.CurCameraIndex]);
+            }
+        }
+        else
+        {
+            Debug.Log("시점 전환 : 인덱스에 대한 키 값이 없다.");
         }
 
         if (PhotonNetwork.IsMasterClient)

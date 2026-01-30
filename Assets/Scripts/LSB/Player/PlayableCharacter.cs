@@ -392,7 +392,7 @@ public class PlayableCharacter : MonoBehaviourPun
                 if (!pv.IsMine)
                 {
                     otherPlayerTransform.Add(p.transform);
-                    checkPlayerActorNumBycameraIndex[otherPlayerTransform.Count - 1] = pv.OwnerActorNr;
+                    CheckPlayerActorNumByCameraIndex.Add(otherPlayerTransform.Count - 1, pv.OwnerActorNr);
                 }
             }
         }
