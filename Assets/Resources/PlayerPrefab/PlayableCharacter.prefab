@@ -177,9 +177,10 @@ MonoBehaviour:
     m_Bits: 0
   checkDistance: 1
   cameraIndex: -1
+  curCameraIndex: -1
   otherPlayerTransform: []
-  currentTransform: {fileID: 0}
   <interactionData>k__BackingField: {fileID: 0}
+  <currentTransform>k__BackingField: {fileID: 0}
 --- !u!114 &-6589114128582020185
 MonoBehaviour:
   m_ObjectHideFlags: 0
