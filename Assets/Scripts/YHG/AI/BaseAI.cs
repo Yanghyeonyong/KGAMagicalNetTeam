@@ -121,6 +121,7 @@ public abstract class BaseAI : MonoBehaviourPunCallbacks, IPunObservable, IDamag
     {
         //래그돌 상태면 AI 회로 끊어버리기
         if (IsKnockedDown) return;
+        if (currentNetworkState == AIStateID.Dead) return; // 이신빈
 
         //마스터 클라이언트만 상태머신 돌리기
         if (PhotonNetwork.IsMasterClient)
@@ -208,19 +209,12 @@ public abstract class BaseAI : MonoBehaviourPunCallbacks, IPunObservable, IDamag
     {
         ChangeNetworkState(AIStateID.Dead);
 
-        if (Agent != null && Agent.isActiveAndEnabled && Agent.isOnNavMesh)
+        if (Agent != null && Agent.isActiveAndEnabled)
         {
             Agent.isStopped = true;
             Agent.ResetPath();
+            Agent.enabled = false; // 이신빈
         }
-
-        if (Agent != null)
-        {
-            Agent.enabled = false;
-        }
-
-        Collider col = GetComponent<Collider>();
-        if (col) col.enabled = false;
 
         if (Anim != null) Anim.enabled = false;
 
@@ -228,10 +222,8 @@ public abstract class BaseAI : MonoBehaviourPunCallbacks, IPunObservable, IDamag
         var ragdollCtrl = GetComponent<HumanoidRagdollController>();
         if (ragdollCtrl != null)
         { 
-            ragdollCtrl.ApplyRagdoll(Vector3.zero);
+            ragdollCtrl.ApplyRagdoll(Vector3.zero, true);
         }
-
-        this.enabled = false;
 
         //마스터클라만
         if (PhotonNetwork.IsMasterClient)
@@ -249,8 +241,8 @@ public abstract class BaseAI : MonoBehaviourPunCallbacks, IPunObservable, IDamag
     //랙돌 초기 설정
     private void InitRagdoll()
     {
-        ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
-        ragdollColliders = GetComponentsInChildren<Collider>();
+        //ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
+        //ragdollColliders = GetComponentsInChildren<Collider>();
 
         Rigidbody rootRb = GetComponent<Rigidbody>();
         if (rootRb != null)
@@ -260,6 +252,7 @@ public abstract class BaseAI : MonoBehaviourPunCallbacks, IPunObservable, IDamag
             rootRb.collisionDetectionMode = CollisionDetectionMode.Discrete;
         }
 
+        ragdollRigidbodies = GetComponentsInChildren<Rigidbody>();
         foreach (Rigidbody rb in ragdollRigidbodies)
         {
             //본체는 제외

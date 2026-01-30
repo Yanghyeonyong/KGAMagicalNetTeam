@@ -1,6 +1,8 @@
 using BzKovSoft.RagdollTemplate.Scripts.Charachter;
+using ExitGames.Client.Photon.StructWrapping;
 using Photon.Pun;
 using System.Collections;
+using UnityEditor.Localization.Plugins.XLIFF.V20;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -12,6 +14,7 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
     [SerializeField] private BzRagdoll bzRagdoll;
     [SerializeField] private Animator animator;
     [SerializeField] private NavMeshAgent agent;
+    private Collider rootCollider;
 
     [Header("설정값")]
     [SerializeField] private float knockDownDuration = 1.5f; //최소 기절 시간
@@ -23,14 +26,13 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
     //상태 관리용
     private bool isRagdollActive = false;
     private float ragdollStartTime;
-
-    // 토네이도 내부 상태 확인용 플래그
     private bool isInTornado = false;
 
-    //중복기상방지
+    public bool IsInTornado => isInTornado;
 
     private bool isRecovering = false;
-    
+    private Coroutine getUpCoroutine;
+
 
     private void Awake()
     {
@@ -38,19 +40,20 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         baseAI = GetComponent<BaseAI>();
+        rootCollider = GetComponent<Collider>();
     }
 
     private void Update()
     {
-        if (baseAI != null && baseAI.CurrentHP <= 0) return;
-        if (isRecovering) return;
+        if (baseAI != null && baseAI.currentNetworkState == BaseAI.AIStateID.Dead) return;
 
-        // 토네이도 적용 중이면 타이머 리셋
         if (isInTornado)
         {
             ragdollStartTime = Time.time;
             return;
         }
+
+        if (isRecovering) return;
 
         //일단 대기
         if (Time.time - ragdollStartTime < knockDownDuration) return;
@@ -61,27 +64,46 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
         {
             CheckGetUpCondition();
         }
+
+        if (isRagdollActive)
+        {
+            Transform hips = animator.GetBoneTransform(HumanBodyBones.Hips);
+            if (hips != null) transform.position = hips.position;
+        }
     }
 
     //외부용 피격 메서드
-    public void ApplyRagdoll(Vector3 force)
+    public void ApplyRagdoll(Vector3 force, bool forceReset = false)
     {
-        if (isRagdollActive) return;
+        if (isRagdollActive && !forceReset) return; // 이신빈
         //이미 다운된 상태면 무시 (누워있어도 계속 날아가게 처리?? 일단 보류)
         //무콤 필요하면 주석해제 하고 테스트
 
         photonView.RPC(nameof(RpcActivateRagdoll), RpcTarget.All, force);
     }
-
+     
     //피격 RPC
     [PunRPC]
     private void RpcActivateRagdoll(Vector3 force)
     {
+        if (getUpCoroutine != null) StopCoroutine(getUpCoroutine); // 이신빈
+
         isRagdollActive = true;
         isRecovering = false;
         ragdollStartTime = Time.time;
 
         if (baseAI != null) baseAI.IsKnockedDown = true;
+
+        if (agent != null && agent.enabled)
+        {
+            agent.velocity = Vector3.zero;
+            agent.updatePosition = false;
+            agent.enabled = false;
+        }
+
+        if (animator != null) animator.enabled = false; // 이신빈
+
+        if (rootCollider != null) rootCollider.enabled = false; // 이신빈
 
         //에셋 래그돌 시스템<- 어댑터 있음
         bzRagdoll.IsRagdolled = true;
@@ -92,16 +114,10 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
         if (hips != null)
         {
             Rigidbody hipsRigid = hips.GetComponent<Rigidbody>();
-
             if (hipsRigid != null)
             {
-                //임펄스가 기획의도 상 베스트일 듯
+                hipsRigid.linearVelocity = Vector3.zero; // 이신빈
                 hipsRigid.AddForce(force, ForceMode.Impulse);
-            }
-            else
-            {
-                Debug.Log("허리에 리짓바디 없음");
-
             }
         }
     }
@@ -118,13 +134,11 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
         Transform hips = animator.GetBoneTransform(HumanBodyBones.Hips);
         if (hips == null)
         {
-            Debug.Log("테스트 겟본트랜스폼 없음, 나중에 로그 제거");
             return; //방어 코드
         }
         Rigidbody hipsRigid = hips.GetComponent<Rigidbody>();
         if (hipsRigid == null)
         {
-            Debug.LogError("골반 리짓바디없읆.,,,,");
             return;
         }
 
@@ -136,22 +150,21 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
             {
                 getUpPos = hit.position;
             }
-
+            
             //일어나는 중
             isRecovering = true;
 
             //안전한 위치를 모두에게 전송하며 기상 명령(텔포 좀 할 듯)?
             photonView.RPC(nameof(RpcGetUp), RpcTarget.All, getUpPos);
         }
-
     }
 
     //기상실행 RPC -> 애니메이션 시간에 맞춰 코루틴으로?
     [PunRPC]
     private void RpcGetUp(Vector3 syncPosition)
     {
-        if (baseAI != null && baseAI.CurrentHP <= 0) return;
-        StartCoroutine(CoGetUpProcess(syncPosition));
+        if (baseAI != null && baseAI.currentNetworkState == BaseAI.AIStateID.Dead) return;
+        getUpCoroutine = StartCoroutine(CoGetUpProcess(syncPosition));
     }
 
     private IEnumerator CoGetUpProcess(Vector3 pos)
@@ -162,44 +175,26 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
         //애니메이션 재생 대기
         yield return CoroutineManager.waitForSeconds(getUpAnimationDuration);
 
+        if (isInTornado) yield break;
+
         transform.position = pos;
+        if (rootCollider != null) rootCollider.enabled = true;
 
-        yield return null;
-
-        if (animator != null)
-        {
-            animator.enabled = true;
-        }
-
+        if (animator != null) animator.enabled = true;
         if (agent != null)
         {
             agent.enabled = true;
             agent.isStopped = false;
-
-            NavMeshHit hit;
-            if (NavMesh.SamplePosition(pos, out hit, 3.0f, NavMesh.AllAreas))
-            {
-                agent.Warp(hit.position);
-            }
-            else
-            {
-                agent.Warp(pos);
-            }
-
+            agent.Warp(pos);
             agent.updatePosition = true;
             agent.updateRotation = true;
         }
 
-        //시민 경비 리커버리 시 행동 수행(방장만)
-        if (PhotonNetwork.IsMasterClient)
-        {
-            baseAI.OnRecoverFromKnockdown();
-        }
-        else
-        {
-            baseAI.IsKnockedDown = false;
-        }
+        if (PhotonNetwork.IsMasterClient) baseAI.OnRecoverFromKnockdown();
+        else baseAI.IsKnockedDown = false;
+
         isRagdollActive = false;
+        isRecovering = false;
     }
 
     public void OnMagicInteract(GameObject magic, MagicDataSO data, int attackerActorNr)
@@ -207,16 +202,15 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
         switch (data.magicType)
         {
             case MagicType.Fireball:
-                FireballReaction(magic, data, attackerActorNr);
-                break;
             case MagicType.Lightning:
-                LightningStrikeReaction(magic, data, attackerActorNr);
+                Vector3 dir = (transform.position - magic.transform.position).normalized;
+                Vector3 force = (dir + Vector3.up * 0.5f) * data.knockbackForce;
+                ApplyRagdoll(force);
+                if (baseAI != null) baseAI.TakeDamage(data.damage);
                 break;
+
             case MagicType.Tornado:
                 TornadoReaction(data);
-                break;
-            default:
-                Debug.LogWarning("[HumanoidRagdollController] 마법 타입 설정 안했거나 구현을 안했음");
                 break;
         }
     }
@@ -243,15 +237,35 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
 
     public void TornadoReaction(MagicDataSO data)
     {
-        ApplyRagdoll(Vector3.up * 2.0f);
+        StartCoroutine(CoTornadoReaction(data));
+    }
 
-        if (baseAI != null)
-            baseAI.TakeDamage(0);
+    private IEnumerator CoTornadoReaction(MagicDataSO data)
+    {
+        if (baseAI != null) baseAI.TakeDamage(0);
+
+        // 강제 래그돌화
+        ApplyRagdoll(Vector3.zero, true);
+
+        // 물리 엔진 초기화 대기
+        yield return new WaitForFixedUpdate();
+
+        // 힘 적용
+        Rigidbody hips = GetRagdollHips();
+        if (hips != null)
+        {
+            hips.WakeUp();
+            hips.linearVelocity = Vector3.zero;
+            hips.AddForce(Vector3.up * 8.0f, ForceMode.Impulse);
+        }
     }
 
     public bool CheckInteractable(GameObject magic, MagicDataSO data, int attackerActorNr)
     {
         if (data.magicType == MagicType.Tornado) return true;
+
+        if (baseAI != null && baseAI.currentNetworkState == BaseAI.AIStateID.Dead) return false;
+        if (isRagdollActive) return false;
 
         return true;
     }
@@ -259,17 +273,17 @@ public class HumanoidRagdollController : MonoBehaviourPun, IMagicInteractable
     public void SetTornadoState(bool state)
     {
         isInTornado = state;
-        // 토네이도에 잡히면 타이머 리셋
-        if (state) ragdollStartTime = Time.time;
+        if (state)
+        {
+            ragdollStartTime = Time.time;
+            if (getUpCoroutine != null) StopCoroutine(getUpCoroutine);
+        }
     }
 
-    // 토네이도가 맞을 Hip 반환
     public Rigidbody GetRagdollHips()
     {
         Transform hips = animator.GetBoneTransform(HumanBodyBones.Hips);
         if (hips != null) return hips.GetComponent<Rigidbody>();
-
-        // Hip 못찾으면 그냥 Rigidbody 반환
         return GetComponent<Rigidbody>();
     }
 }
