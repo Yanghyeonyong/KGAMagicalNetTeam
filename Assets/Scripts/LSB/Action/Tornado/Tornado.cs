@@ -87,6 +87,9 @@ public class Tornado : MonoBehaviourPun
     {
         PhotonView targetPV = other.GetComponentInParent<PhotonView>();
 
+        if (other.GetComponent<ChunkNode>().IsIndestructible)
+            return false;
+
         if (targetPV == null)
             return true;
 
@@ -121,6 +124,7 @@ public class Tornado : MonoBehaviourPun
         foreach (var rb in activeTargets)
         {
             if (rb == null) continue;
+
 
             Vector3 objectPos = rb.position;
             Vector3 offset = objectPos - transform.position;
