@@ -157,6 +157,8 @@ public class FirebaseAuthManager : Singleton<FirebaseAuthManager>
 
         bool checkEmail = task.Result.Any();
 
+        if (!gameObject.activeSelf)
+            yield break;
         loginButton?.gameObject.SetActive(checkEmail);
         registerButton?.gameObject.SetActive(!checkEmail);
         nickField.interactable = !checkEmail;
@@ -181,22 +183,22 @@ public class FirebaseAuthManager : Singleton<FirebaseAuthManager>
             switch (errorCode)
             {
                 case AuthError.MissingEmail:
-                    message = "이메일 누락";
+                    message = "Missing Email";
                     break;
                 case AuthError.MissingPassword:
-                    message = "패스워드 누락";
+                    message = "MissingPassword";
                     break;
                 case AuthError.WrongPassword:
-                    message = "패스워드 틀림";
+                    message = "WrongPassword";
                     break;
                 case AuthError.InvalidEmail:
-                    message = "이메일 형식이 옳지 않음";
+                    message = "InvalidEmail";
                     break;
                 case AuthError.UserNotFound:
-                    message = "아이디가 존재하지 않음";
+                    message = "UserNotFound";
                     break;
                 default:
-                    message = "관리자에게 문의 바랍니다";
+                    message = "IDONTKNOW";
                     break;
             }
             Debug.Log(message);
