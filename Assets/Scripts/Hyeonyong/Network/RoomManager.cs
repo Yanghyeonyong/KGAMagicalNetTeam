@@ -117,7 +117,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
         this.player = player;
     }
 
-    private void OnDisable()
+    public override void OnDisable()
     {
         base.OnDisable();
         if (tabInput != null)
