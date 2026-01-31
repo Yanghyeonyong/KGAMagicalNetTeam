@@ -202,6 +202,7 @@ public class GameManager : PhotonSingleton<GameManager>
 
     public override void OnLeftRoom()
     {
+        PhotonNetwork.IsMessageQueueRunning = false;
         SceneManager.LoadScene("Lobby");
     }
 
