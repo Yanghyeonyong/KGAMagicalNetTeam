@@ -72,6 +72,7 @@ public class UIManager : MonoBehaviour
     [Header("기타")]
     [SerializeField] GameObject[] Panels;
     [SerializeField] private InputActionReference escInput;
+    public bool checkOpenUI=false;
 
 
 
@@ -372,36 +373,17 @@ public class UIManager : MonoBehaviour
 
     private void OpenUI(InputAction.CallbackContext context)
     {
-        if (gameSettingUI != null)
-        {
-            if (onGame)
-            {
-                foreach (GameObject ui in settingUIGameObject)
-                {
-                    if (ui.activeSelf)
-                    {
-                        ui.gameObject.SetActive(false);
-                        return;
-                    }
-                }
-            }
-
-            Debug.Log("esc 입력");
-            onGameSettingUI = !onGameSettingUI;
-            gameSettingUI.SetActive(onGameSettingUI);
-
-            if (onGameSettingUI)
-            {
-                OpenUI(uiName);
-            }
-            else
-            {
-                CloseUI(uiName);
-            }
-        }
+        OpenUIForUI();
     }
     public void OpenUIForUI()
     {
+        //인벤토리 열려있으면 열지 못함
+        if ((GameManager.Instance.InventoryWheel!=null))
+        {
+            if (GameManager.Instance.InventoryWheel.IsInventoryUIOn)
+                return;
+        }
+
         if (gameSettingUI != null)
         {
             if (onGame)
@@ -433,6 +415,7 @@ public class UIManager : MonoBehaviour
         Debug.Log("UI 열림");
         checkUI[uiName] = true;
         onOpenUI.Invoke();
+        checkOpenUI = true;
     }
 
     public void CloseUI(string name)
@@ -453,6 +436,7 @@ public class UIManager : MonoBehaviour
                 return false;
             }
         }
+        checkOpenUI = false;
         return true;
     }
     public void AddUI(string name)

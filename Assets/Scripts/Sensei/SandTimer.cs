@@ -10,6 +10,8 @@ public class SandTimer : MonoBehaviourPun
     [SerializeField] GuardManager _guardManager;
     [SerializeField] Image _image;
 
+    [SerializeField] AudioClip _bellClip;
+
     Coroutine _sandDropping;
     Coroutine _flipTimer;
     WaitForSeconds _sandAnimationDelay = new WaitForSeconds(0.15f);
@@ -58,8 +60,11 @@ public class SandTimer : MonoBehaviourPun
             StopCoroutine(_flipTimer);
         }
         _flipTimer = StartCoroutine(Flip());
+        if (_bellClip != null)
+        {
+            SoundManager.Instance.PlaySFX(_bellClip);
+        }
     }
-
 
 
 
