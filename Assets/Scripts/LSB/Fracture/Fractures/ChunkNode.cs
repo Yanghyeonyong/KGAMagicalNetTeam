@@ -86,7 +86,10 @@ public class ChunkNode : MonoBehaviour, IMagicInteractable
         {
             rb.isKinematic = false;
             rb.useGravity = true;
+
             rb.gameObject.layer = LayerMask.NameToLayer("Default");
+
+            rb.WakeUp();
 
             foreach (var neighbor in _neighbours)
             {
@@ -123,8 +126,6 @@ public class ChunkNode : MonoBehaviour, IMagicInteractable
             Gizmos.DrawSphere(pos, 0.2f);
         }
     }
-
-    // --- 인터페이스 구현 ---
 
     public void OnMagicInteract(GameObject magic, MagicDataSO data, int attackerActorNr)
     {
