@@ -10933,7 +10933,7 @@ MonoBehaviour:
   mouseSensivitySlider: {fileID: 1833500826}
   checkMouseXInvert: {fileID: 1807966099}
   checkMouseYInvert: {fileID: 1677195154}
-  thirdPersonCamera: {fileID: 0}
+  thirdPersonCamera: {fileID: 1554465590}
   languageDropDown: {fileID: 1940812090}
   graphicQualityDropDown: {fileID: 569536781}
   resolutionDropDown: {fileID: 389242340}
@@ -23065,6 +23065,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
+--- !u!114 &1554465590 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6889061143709278756, guid: b11b393031858bc45bc7526f09f2896a, type: 3}
+  m_PrefabInstance: {fileID: 1554465588}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ad2409230c54eb46aa84710b80cf81b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ThirdPersonCamera
 --- !u!1 &1554816625
 GameObject:
   m_ObjectHideFlags: 0

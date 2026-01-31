@@ -21096,7 +21096,7 @@ MonoBehaviour:
   mouseSensivitySlider: {fileID: 392804457}
   checkMouseXInvert: {fileID: 121989668}
   checkMouseYInvert: {fileID: 51503285}
-  thirdPersonCamera: {fileID: 0}
+  thirdPersonCamera: {fileID: 2078778695}
   languageDropDown: {fileID: 1259797543}
   graphicQualityDropDown: {fileID: 193287972}
   resolutionDropDown: {fileID: 1156891505}
@@ -21251,6 +21251,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b11b393031858bc45bc7526f09f2896a, type: 3}
+--- !u!114 &2078778695 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6889061143709278756, guid: b11b393031858bc45bc7526f09f2896a, type: 3}
+  m_PrefabInstance: {fileID: 2078778694}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ad2409230c54eb46aa84710b80cf81b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ThirdPersonCamera
 --- !u!1 &2084561267
 GameObject:
   m_ObjectHideFlags: 0
