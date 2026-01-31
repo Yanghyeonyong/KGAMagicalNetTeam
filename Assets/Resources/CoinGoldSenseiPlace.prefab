@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -2848474771336599834}
   - component: {fileID: -3989336984074054663}
   m_Layer: 0
-  m_Name: CoinGoldSensei
+  m_Name: CoinGoldSenseiPlace
   m_TagString: Money
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
