@@ -72,6 +72,7 @@ public class UIManager : MonoBehaviour
     [Header("기타")]
     [SerializeField] GameObject[] Panels;
     [SerializeField] private InputActionReference escInput;
+    public bool checkOpenUI=false;
 
 
 
@@ -433,6 +434,7 @@ public class UIManager : MonoBehaviour
         Debug.Log("UI 열림");
         checkUI[uiName] = true;
         onOpenUI.Invoke();
+        checkOpenUI = true;
     }
 
     public void CloseUI(string name)
@@ -453,6 +455,7 @@ public class UIManager : MonoBehaviour
                 return false;
             }
         }
+        checkOpenUI = false;
         return true;
     }
     public void AddUI(string name)
