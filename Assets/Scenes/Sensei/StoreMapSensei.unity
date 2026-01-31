@@ -399,7 +399,7 @@ GameObject:
   - component: {fileID: 35872778}
   - component: {fileID: 35872777}
   - component: {fileID: 35872781}
-  - component: {fileID: 35872780}
+  - component: {fileID: 35872782}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -448,7 +448,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 60.000004
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -474,33 +474,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 35872776}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.19337745, y: 0.099133424, z: -0.019643465, w: 0.97590566}
+  m_LocalPosition: {x: 2.7, y: 4.25, z: -6.4300003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &35872780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 35872776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ad2409230c54eb46aa84710b80cf81b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ThirdPersonCamera
-  lookAction: {fileID: -5630151704836100654, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  target: {fileID: 0}
-  distance: 5
-  pitchLimits: {x: -20, y: 80}
-  Offset: {x: 1, y: 1.5, z: 0}
-  sensitivity: 50
-  invertX: 0
-  invertY: 0
 --- !u!114 &35872781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -545,6 +525,38 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &35872782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35872776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineBrain
+  ShowDebugText: 0
+  ShowCameraFrustum: 1
+  IgnoreTimeScale: 0
+  WorldUpOverride: {fileID: 0}
+  ChannelMask: -1
+  UpdateMethod: 2
+  BlendUpdateMethod: 1
+  LensModeOverride:
+    Enabled: 0
+    DefaultMode: 2
+  DefaultBlend:
+    Style: 1
+    Time: 2
+    CustomCurve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+  CustomBlends: {fileID: 0}
 --- !u!1 &40419992
 GameObject:
   m_ObjectHideFlags: 0
@@ -9515,6 +9527,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1067511654}
   m_CullTransparentMesh: 1
+--- !u!1001 &1087835352
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 606370340888009582, guid: b11b393031858bc45bc7526f09f2896a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 606370340888009582, guid: b11b393031858bc45bc7526f09f2896a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 606370340888009582, guid: b11b393031858bc45bc7526f09f2896a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 606370340888009582, guid: b11b393031858bc45bc7526f09f2896a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 606370340888009582, guid: b11b393031858bc45bc7526f09f2896a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 606370340888009582, guid: b11b393031858bc45bc7526f09f2896a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 606370340888009582, guid: b11b393031858bc45bc7526f09f2896a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 606370340888009582, guid: b11b393031858bc45bc7526f09f2896a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 606370340888009582, guid: b11b393031858bc45bc7526f09f2896a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 606370340888009582, guid: b11b393031858bc45bc7526f09f2896a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1416295981975648734, guid: b11b393031858bc45bc7526f09f2896a, type: 3}
+      propertyPath: m_Name
+      value: CinemachineController
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b11b393031858bc45bc7526f09f2896a, type: 3}
 --- !u!1 &1089680674
 GameObject:
   m_ObjectHideFlags: 0
@@ -21077,6 +21146,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   emailInput: {fileID: 0}
+  passwordInput: {fileID: 0}
+  nickInput: {fileID: 0}
+  loginBtn: {fileID: 0}
+  registerBtn: {fileID: 0}
+  mouseSensivitySlider: {fileID: 392804457}
+  checkMouseXInvert: {fileID: 121989668}
+  checkMouseYInvert: {fileID: 51503285}
+  thirdPersonCamera: {fileID: 0}
+  languageDropDown: {fileID: 1259797543}
+  graphicQualityDropDown: {fileID: 193287972}
+  resolutionDropDown: {fileID: 1156891505}
+  resolutionWindowDropDown: {fileID: 2028331935}
   bgmSound: {fileID: 295980490}
   bgmSoundMute: {fileID: 1748389757}
   sfxSound: {fileID: 447023806}
@@ -21085,27 +21166,19 @@ MonoBehaviour:
   voiceChatSoundMute: {fileID: 427016826}
   micSound: {fileID: 427539155}
   micSoundMute: {fileID: 120099147}
-  graphicQualityDropDown: {fileID: 193287972}
-  mouseSensivitySlider: {fileID: 392804457}
-  checkMouseXInvert: {fileID: 121989668}
-  checkMouseYInvert: {fileID: 51503285}
-  languageDropDown: {fileID: 1259797543}
-  Panels: []
-  escInput: {fileID: 4999798944730601836, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  resolutionDropDown: {fileID: 1156891505}
-  resolutionWindowDropDown: {fileID: 2028331935}
-  thirdPersonCamera: {fileID: 35872780}
+  uiName: GameMenu
   playerInfoPanel: {fileID: 1906860198}
   myInfoPanel: {fileID: 98979073}
   IconPanel: {fileID: 1716272075}
   moneyCount: {fileID: 1188340642}
   gameSettingUI: {fileID: 1416813645}
-  onGame: 1
   settingUIGameObject:
   - {fileID: 380923346}
   - {fileID: 2004365454}
   - {fileID: 553571274}
-  uiName: GameMenu
+  Panels: []
+  escInput: {fileID: 4999798944730601836, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  onGame: 1
 --- !u!4 &2063923250
 Transform:
   m_ObjectHideFlags: 0
@@ -21862,6 +21935,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 35872779}
+  - {fileID: 1087835352}
   - {fileID: 993860544}
   - {fileID: 1452711250}
   - {fileID: 806215632}
