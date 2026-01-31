@@ -79,7 +79,6 @@ public class ChattingManager : MonoBehaviourPunCallbacks
         }
         
     }
-
     IEnumerator SendMyMessage()
     {
         Debug.Log("채팅입력");
@@ -124,6 +123,17 @@ public class ChattingManager : MonoBehaviourPunCallbacks
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
         chattingText.text += "\n" + newPlayer.NickName + "님이 방에 입장하셨습니다.";
+        if (receiveCoroutine != null)
+            StopCoroutine(receiveCoroutine);
+        receiveCoroutine = StartCoroutine(ReceiveMessage());
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        chattingText.text += "\n" + otherPlayer.NickName + "님이 방에서 퇴장하셨습니다.";
+        if (receiveCoroutine != null)
+            StopCoroutine(receiveCoroutine);
+        receiveCoroutine = StartCoroutine(ReceiveMessage());
     }
 
 
