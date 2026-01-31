@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1369922121834817469}
   - component: {fileID: 5311234025492769093}
   m_Layer: 0
-  m_Name: Speaker
+  m_Name: Speaker_FinalRound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,9 +58,9 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
+  DopplerLevel: 1.49
+  MinDistance: 10
+  MaxDistance: 50
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -110,7 +110,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.05277778
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -165,13 +165,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91175dcc15224463780e01a8a98b1b60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: PhotonVoice::Photon.Voice.Unity.Recorder
-  voiceDetection: 0
+  voiceDetection: 1
   voiceDetectionThreshold: 0.01
   voiceDetectionDelayMs: 500
   interestGroup: 0
   useTargetPlayers: 0
   targetPlayers: 
-  debugEchoMode: 1
+  debugEchoMode: 0
   reliableMode: 0
   encrypt: 0
   transmitEnabled: 1
