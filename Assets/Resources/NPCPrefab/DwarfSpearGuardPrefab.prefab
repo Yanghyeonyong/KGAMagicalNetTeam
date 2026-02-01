@@ -6150,7 +6150,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.2
-  m_Speed: 3.5
+  m_Speed: 6
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 500
@@ -6159,7 +6159,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0.2
+  m_BaseOffset: 0.4
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!136 &6275701165263495279
@@ -6224,7 +6224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5afddf1ab67e7dc4d964c8f9d4386d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GuardAI
-  moveSpeed: 3.5
+  moveSpeed: 6
   rotSpeed: 1500
   maxHP: 1
   humanModel: {fileID: 4912358502681103685}
