@@ -366,10 +366,17 @@ public class InventoryWheelLogic : MonoBehaviour
         foreach (var item in GameManager.Instance.LocalPlayer.GetComponent<PlayableCharacter>().Inventory.Inventory)
         {
             _wheelSlots[index].gameObject.SetActive(true);
+            _wheelSlots[index].color = new Color(1, 1, 1, 1);
             _wheelSlots[index].sprite = item.Key.itemImage;
             _wheelSlotCounts[index].text = item.Value.ToString();
             index++;
 
+        }
+        for (int i = index; i < _wheelSlots.Count; i++)
+        {
+            //_wheelSlots[i].gameObject.SetActive(false);
+            _wheelSlotCounts[i].text = "";
+            _wheelSlots[i].color = new Color(1, 1, 1, 0);
         }
     }
 
