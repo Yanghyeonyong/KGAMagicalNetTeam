@@ -261,7 +261,10 @@ public class UIManager : MonoBehaviour
         if (graphicQualityDropDown != null)
         {
             graphicQualityDropDown.onValueChanged.AddListener((value) => 
-            { PlayerPrefsDataManager.GraphicQuality = value; });
+            { 
+                PlayerPrefsDataManager.GraphicQuality = value;
+                SetQuality();
+            });
             graphicQualityDropDown.value = PlayerPrefsDataManager.GraphicQuality;
         }
 
