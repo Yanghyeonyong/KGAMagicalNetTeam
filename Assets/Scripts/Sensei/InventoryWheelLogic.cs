@@ -10,6 +10,7 @@ public class InventoryWheelLogic : MonoBehaviour
     //[SerializeField] List<Transform> _wheelSlotPositions; // 인벤토리 휠 슬롯들
     [SerializeField] List<Image> _wheelSlots; // 인벤토리 휠 슬롯들에 들어갈 아이템들
     [SerializeField] List<TextMeshProUGUI> _wheelSlotCounts; // 인벤토리 휠 슬롯들에 들어갈 아이템 갯수들
+    [SerializeField] List<Image> _wheelSlotsBackgrounds;
 
     //260115 최정욱 인벤토리 UI 관련 추가
     [Header("인벤토리 UI Sensei")]
@@ -369,6 +370,11 @@ public class InventoryWheelLogic : MonoBehaviour
             _wheelSlots[index].color = new Color(1, 1, 1, 1);
             _wheelSlots[index].sprite = item.Key.itemImage;
             _wheelSlotCounts[index].text = item.Value.ToString();
+            MagicDataSO magicData = item.Key as MagicDataSO;
+            if (magicData != null)
+            {
+                _wheelSlotCounts[index].text = "";
+            }
             index++;
 
         }
