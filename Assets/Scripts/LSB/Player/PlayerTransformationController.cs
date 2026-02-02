@@ -23,6 +23,7 @@ public class PlayerTransformationController : MonoBehaviourPun
         playableCharater.RemoveLayer();
         playableCharater.CivilianModel.SetActive(true);
         playableCharater.WizardModel.SetActive(false);
+        playableCharater.SetCurrentTransform(playableCharater.CivilianModel.transform);
         currentAnimator = playableCharater.CivilianModel.GetComponent<Animator>();
         IsWizard = false;
 
@@ -57,7 +58,7 @@ public class PlayerTransformationController : MonoBehaviourPun
     private void CancelTransformation()
     {
         IsTransforming = false;
-        Debug.Log("º¯½Å Ãë¼Ò");
+        Debug.Log("ë³€ì‹  ì·¨ì†Œ");
 
         
 
@@ -76,7 +77,7 @@ public class PlayerTransformationController : MonoBehaviourPun
     private IEnumerator TransformationRoutine()
     {
         IsTransforming = true;
-        Debug.Log("º¯½Å ½ÃÀü Áß...");
+        Debug.Log("ë³€ì‹  ì‹œì „ ì¤‘...");
 
         if (playableCharater.InputHandler != null)
             playableCharater.InputHandler.OffPlayerInput();
@@ -119,6 +120,7 @@ public class PlayerTransformationController : MonoBehaviourPun
 
         playableCharater.CivilianModel.SetActive(false);
         playableCharater.WizardModel.SetActive(true);
+        playableCharater.SetCurrentTransform(playableCharater.WizardModel.transform);
 
         currentAnimator = playableCharater.WizardModel.GetComponent<Animator>();
 
@@ -131,6 +133,6 @@ public class PlayerTransformationController : MonoBehaviourPun
 
         GuardManager.instance?.NotifyPlayerTransform();
         playableCharater.ChangePlayerLayer();
-        Debug.Log("¸¶¹ý»ç·Î º¯½Å ¿Ï·á!");
+        Debug.Log("ë§ˆë²•ì‚¬ë¡œ ë³€ì‹  ì™„ë£Œ!");
     }
 }

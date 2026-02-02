@@ -4960,7 +4960,7 @@ GameObject:
   - component: {fileID: 2883049240105896823}
   - component: {fileID: 4916852335432025674}
   - component: {fileID: 3233447303553613488}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: BasicTornado
   m_TagString: Untagged
   m_Icon: {fileID: 0}

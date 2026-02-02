@@ -14739,7 +14739,7 @@ GameObject:
   - component: {fileID: 198094002163677414}
   - component: {fileID: 199346489615907956}
   - component: {fileID: -597960757050774234}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: FireballExplosionRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}

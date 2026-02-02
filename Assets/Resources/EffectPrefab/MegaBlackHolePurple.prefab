@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8639477453220110674}
   - component: {fileID: -2656928963521455618}
   - component: {fileID: 4902006090161360561}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: MegaBlackHolePurple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
