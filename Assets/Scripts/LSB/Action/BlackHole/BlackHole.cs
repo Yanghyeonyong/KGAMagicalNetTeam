@@ -32,8 +32,6 @@ public class BlackHole : MonoBehaviourPun
             triggerCollider.radius = data.radius;
         }
 
-        Debug.Log("블랙홀 생성됨");
-
         if (photonView.IsMine)
         {
             StartCoroutine(LifeCycleRoutine());
@@ -45,10 +43,7 @@ public class BlackHole : MonoBehaviourPun
 
     private void FixedUpdate()
     {
-        if (photonView.IsMine)
-        {
-            PullTargets();
-        }
+        PullTargets();
     }
 
     private void PullTargets()
