@@ -474,8 +474,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 35872776}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.19337745, y: 0.099133424, z: -0.019643465, w: 0.97590566}
-  m_LocalPosition: {x: 2.7, y: 4.25, z: -6.4300003}
+  m_LocalRotation: {x: 0.06588821, y: 0.100839, z: -0.006692986, w: 0.9926961}
+  m_LocalPosition: {x: 2.7, y: 3, z: -5.4300003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4293,6 +4293,87 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -600, y: -200}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1001 &387436260
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 633835262167808727, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
+      propertyPath: targetColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 633835262167808727, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
+      propertyPath: targetColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 633835262167808727, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
+      propertyPath: targetColor.r
+      value: 0.9113884
+      objectReference: {fileID: 0}
+    - target: {fileID: 877263997997129671, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
+      propertyPath: sceneViewId
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.298
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 7.037383
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1875674307199563474, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
+      propertyPath: _itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: bf26e9734460a1e4aa60cdcdbd0acf57, type: 2}
+    - target: {fileID: 2669968911237614072, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
+      propertyPath: m_Name
+      value: Book_3_Brown Sensei Scaled up 1 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3444269921671779059, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
+      propertyPath: _itemData
+      value: 
+      objectReference: {fileID: 11400000, guid: c45f7a598d4d9c74c895023da7ca3956, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
 --- !u!1 &390349767
 GameObject:
   m_ObjectHideFlags: 0
@@ -26016,3 +26097,4 @@ SceneRoots:
   - {fileID: 90113702}
   - {fileID: 1617769266}
   - {fileID: 1215725556}
+  - {fileID: 387436260}
