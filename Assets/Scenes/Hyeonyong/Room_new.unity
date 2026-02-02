@@ -3284,8 +3284,8 @@ GameObject:
   - component: {fileID: 161114712}
   - component: {fileID: 161114711}
   - component: {fileID: 161114710}
-  m_Layer: 0
-  m_Name: Cylinder
+  m_Layer: 13
+  m_Name: InvisibleWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25004,7 +25004,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 3327
+    m_Bits: 7423
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

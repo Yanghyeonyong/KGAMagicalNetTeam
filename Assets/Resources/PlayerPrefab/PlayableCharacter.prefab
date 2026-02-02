@@ -242,7 +242,7 @@ MonoBehaviour:
   minAimDistance: 5
   aimLayerMask:
     serializedVersion: 2
-    m_Bits: 1183
+    m_Bits: 3295
 --- !u!114 &6974702080980810718
 MonoBehaviour:
   m_ObjectHideFlags: 0
