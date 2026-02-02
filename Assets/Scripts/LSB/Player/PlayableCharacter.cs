@@ -88,6 +88,7 @@ public class PlayableCharacter : MonoBehaviourPun, IInteractable
     public bool IsInvincible { get; private set; } = false;
 
     public void SetInvincible(bool isInvincible) => IsInvincible = isInvincible;
+    public void SetCurrentTransform(Transform trans) => currentTransform = trans;
 
 
     #endregion
@@ -300,9 +301,9 @@ public class PlayableCharacter : MonoBehaviourPun, IInteractable
                 IInteract interactInfo = null;
 
                 // 시민, 경비원
-                if (hit.collider.TryGetComponent<BaseAI>(out var ai) || hit.collider.TryGetComponent<PlayableCharacter>(out var p) 
+                if ((hit.collider.TryGetComponent<BaseAI>(out var ai) || hit.collider.TryGetComponent<PlayableCharacter>(out var p))
                     && transform.IsTargetInDirection(ai.transform, DirectionType.Backward, 110f)
-                    && currentTransform.gameObject.activeSelf && TransformationController.IsWizard)
+                    && TransformationController.IsWizard)
                 {
                     interactInfo = interact.GetInteractInfo(InteractionType.Assassinate);
 
