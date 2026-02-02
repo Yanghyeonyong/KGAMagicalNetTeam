@@ -34703,7 +34703,7 @@ GameObject:
   - component: {fileID: 7180596863107431902}
   - component: {fileID: 7073192402796038724}
   - component: {fileID: -8689874300026406079}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: LightningStrikeBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}

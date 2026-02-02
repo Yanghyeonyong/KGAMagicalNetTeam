@@ -24,6 +24,8 @@ public class PanController : MonoBehaviourPunCallbacks, IMagicInteractable, IDam
     [SerializeField] float noiseDelay = 0.01f;
 
     Vector3 originPos;
+
+    [SerializeField] GameObject etcObjects;
     
     private void Start()
     {
@@ -125,6 +127,8 @@ public class PanController : MonoBehaviourPunCallbacks, IMagicInteractable, IDam
             StopCoroutine(damageCoroutine_Noise);
         if (damageCoroutine_Die != null)
             StopCoroutine(damageCoroutine_Die);
+
+        etcObjects.SetActive(false);
     }
 
     float GetFryingPanHP()
