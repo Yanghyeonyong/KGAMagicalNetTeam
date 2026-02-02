@@ -335,7 +335,8 @@ public class PlayerView : MonoBehaviour
 
     public void CheckCoolTimeOnHand(ActionBase action, bool isLeft)
     {
-        if (action == null) return;
+        if (action == null)
+            return;
 
         float curCoolTime = action.CurrentCooldown;
         float maxCoolTime = action.BaseData.cooldown;
@@ -346,6 +347,10 @@ public class PlayerView : MonoBehaviour
         else
             coolTimeIcon = rightHandIconCoolTime;
 
+        if (maxCoolTime<=0)
+        {
+            return;
+        }
         coolTimeIcon.fillAmount = curCoolTime / maxCoolTime;
 
         if (isLeft)
