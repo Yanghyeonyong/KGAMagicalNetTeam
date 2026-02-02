@@ -3,7 +3,7 @@ using UnityEngine.AI;
 using Photon.Pun;
 
 //보스 본체
-public class DragonAI : MonoBehaviourPunCallbacks, IDamageable
+public class DragonAI : MonoBehaviourPunCallbacks, IDamageable, IMagicInteractable
 {
     public StateMachine stateMachine;
 
@@ -225,5 +225,17 @@ public class DragonAI : MonoBehaviourPunCallbacks, IDamageable
 
     public void PlayAudio(Object clip)
     {
+    }
+
+    public bool CheckInteractable(GameObject magic, MagicDataSO data, int attackerActorNr)
+    {
+        if (stateMachine.CurrentState is DragonDeadState) return false;
+        if (stateMachine.CurrentState is DragonPhaseState) return false;
+        return true;
+    }
+
+    public void OnMagicInteract(GameObject magic, MagicDataSO data, int attackerActorNr)
+    {
+        TakeDamage(data.damage);
     }
 }
