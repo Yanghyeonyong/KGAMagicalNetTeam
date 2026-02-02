@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9fb8b1bfc177a34b9857bdaeeab31a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayableCharacter
-  maxHp: 10
+  maxHp: 20
   moveSpeed: 5
   rotationSpeed: 10
   jumpForce: 10
