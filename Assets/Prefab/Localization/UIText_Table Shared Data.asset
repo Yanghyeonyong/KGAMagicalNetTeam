@@ -235,6 +235,26 @@ MonoBehaviour:
     m_Key: Lobby_SetColor_Pink
     m_Metadata:
       m_Items: []
+  - m_Id: 6521783556845568
+    m_Key: Room_BackToLobby
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6522707188723712
+    m_Key: Room_Ready
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6523131643899904
+    m_Key: Room_HideRoom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6523132910579712
+    m_Key: Room_FriendlyFire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6524761374273536
+    m_Key: Room_Frying Pan
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
