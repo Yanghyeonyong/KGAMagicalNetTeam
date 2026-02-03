@@ -472,87 +472,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a3fb4564f76cb0458fa7dcfd90c5a3d, type: 3}
---- !u!1001 &90113702
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 633835262167808727, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: targetColor.b
-      value: 0.09648323
-      objectReference: {fileID: 0}
-    - target: {fileID: 633835262167808727, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: targetColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 633835262167808727, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: targetColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 877263997997129671, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: sceneViewId
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.514
-      objectReference: {fileID: 0}
-    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.298
-      objectReference: {fileID: 0}
-    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 7.037383
-      objectReference: {fileID: 0}
-    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1875674307199563474, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: _itemData
-      value: 
-      objectReference: {fileID: 11400000, guid: fbadf4988709712469694beead882a26, type: 2}
-    - target: {fileID: 2669968911237614072, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: m_Name
-      value: Book_3_Brown Sensei Scaled up 1 (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3444269921671779059, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: _itemData
-      value: 
-      objectReference: {fileID: 11400000, guid: fbadf4988709712469694beead882a26, type: 2}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
 --- !u!1001 &103955619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -823,7 +742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.03
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1874,7 +1793,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.856
+      value: -1.963
       objectReference: {fileID: 0}
     - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2411,87 +2330,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec7c037c865f8bc4cbad009803782a70, type: 3}
---- !u!1001 &1617769266
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 633835262167808727, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: targetColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 633835262167808727, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: targetColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 633835262167808727, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: targetColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 877263997997129671, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: sceneViewId
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.158
-      objectReference: {fileID: 0}
-    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.298
-      objectReference: {fileID: 0}
-    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 7.037383
-      objectReference: {fileID: 0}
-    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1188092981143614753, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1875674307199563474, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: _itemData
-      value: 
-      objectReference: {fileID: 11400000, guid: 78b14261e6e16134495bce0e3e3800f1, type: 2}
-    - target: {fileID: 2669968911237614072, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: m_Name
-      value: Book_3_Brown Sensei Scaled up 1 (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 3444269921671779059, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
-      propertyPath: _itemData
-      value: 
-      objectReference: {fileID: 11400000, guid: 78b14261e6e16134495bce0e3e3800f1, type: 2}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7473d78f6f571d244b9a2437dcdac6e4, type: 3}
 --- !u!1001 &1624362492
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3481,8 +3319,6 @@ SceneRoots:
   - {fileID: 1466416442}
   - {fileID: 1934035733}
   - {fileID: 904123431}
-  - {fileID: 90113702}
-  - {fileID: 1617769266}
   - {fileID: 1215725556}
   - {fileID: 387436260}
   - {fileID: 241619887}
