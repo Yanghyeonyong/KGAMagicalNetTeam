@@ -8,11 +8,10 @@ using UnityEngine.AI;
 public class DragonFlightState : BossStateBase
 {
     private Vector3 targetPos;      //돌진 지
-    private float flightSpeed = 15.0f; //돌진 속도
-    private float maxFlightDuration = 3.0f; //시간
+    private float flightSpeed = 20.0f; //돌진 속도
+    private float maxFlightDuration = 4.0f; //시간
     private float flightTimer = 0f;
 
-    // === 이륙(Take off) 설정 [추가됨] ===
     private bool isTakingOff = false;       //이륙 중
     private float takeOffDuration = 2.0f;   //시간
     private float takeOffTimer = 0f;
@@ -26,7 +25,7 @@ public class DragonFlightState : BossStateBase
     private string fireZonePrefabName = "EffectPrefab/DragonFireZone";
 
     //몸박
-    private float chargeDamage = 14f;
+    private float chargeDamage = 19f;
     private HashSet<int> hitPlayerIDs = new HashSet<int>();
 
     public DragonFlightState(DragonAI dragon, StateMachine stateMachine) 
