@@ -255,6 +255,38 @@ MonoBehaviour:
     m_Key: Room_Frying Pan
     m_Metadata:
       m_Items: []
+  - m_Id: 6526200360284160
+    m_Key: MapOne_Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6526201245282304
+    m_Key: MapOne_Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6526202042200064
+    m_Key: MapOne_Guide
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6526202805563392
+    m_Key: MapOne_Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6527582744162304
+    m_Key: MapOne_Settings_Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6527625668669440
+    m_Key: MapOne_Settings_Graphic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6527626197151744
+    m_Key: MapOne_Settings_Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6527626641747968
+    m_Key: MapOne_Settings_Close
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

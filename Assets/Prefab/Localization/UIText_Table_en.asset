@@ -258,6 +258,38 @@ MonoBehaviour:
     m_Localized: Frying Pan (Probably)
     m_Metadata:
       m_Items: []
+  - m_Id: 6526200360284160
+    m_Localized: Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6526202805563392
+    m_Localized: Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6526201245282304
+    m_Localized: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6526202042200064
+    m_Localized: Controls
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6527582744162304
+    m_Localized: GamePlay
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6527625668669440
+    m_Localized: Graphic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6527626197151744
+    m_Localized: Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6527626641747968
+    m_Localized: Close
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
