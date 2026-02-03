@@ -7,6 +7,9 @@ public class DragonAI : MonoBehaviourPunCallbacks, IDamageable, IMagicInteractab
 {
     public StateMachine stateMachine;
 
+    public float soundMaxDistance = 60.0f;
+
+
     //파이어볼
     public MagicDataSO fireballMagicData; 
     public Transform mouthPos; 
@@ -256,6 +259,19 @@ public class DragonAI : MonoBehaviourPunCallbacks, IDamageable, IMagicInteractab
 
     public void PlayAudio(Object clip)
     {
+        //클립 직접 드래그 시
+        if (clip is AudioClip audioClip)
+        {
+            SoundManager.Instance.PlaySFX(audioClip, 1.0f, soundMaxDistance, transform.position);
+        }
+    }
+    public void PlayAudio(string clipName)
+    {
+        //텍스트호출
+        if (SoundManager.Instance != null && !string.IsNullOrEmpty(clipName))
+        {
+            SoundManager.Instance.PlaySFX(clipName, 1.0f, soundMaxDistance, transform.position);
+        }
     }
 
     public bool CheckInteractable(GameObject magic, MagicDataSO data, int attackerActorNr)

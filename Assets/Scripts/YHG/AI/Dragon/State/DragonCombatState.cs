@@ -46,8 +46,6 @@ public class DragonCombatState : BossStateBase
 
         Vector3 toTarget = dragon.targetPlayer.position - dragon.transform.position;
         float dist = toTarget.magnitude;
-        float angle = Vector3.SignedAngle(dragon.transform.forward, toTarget, Vector3.up);
-        float absAngle = Mathf.Abs(angle);
 
         //멀면 추격
         if (dist > dragon.distCombatExit)
@@ -59,8 +57,22 @@ public class DragonCombatState : BossStateBase
         //쿨
         if (Time.time >= lastAttackTime + attackCooldown)
         {
-            DecideAttackPattern(absAngle, dist);
+            float angle = Vector3.SignedAngle(dragon.transform.forward, toTarget, Vector3.up);
+            DecideAttackPattern(Mathf.Abs(angle), dist);
             lastAttackTime = Time.time;
+        }
+    }
+
+    //방향잡는로직인데 일단 보류
+    private void RotateTowardsTarget()
+    {
+        if (dragon.targetPlayer == null) return;
+        Vector3 dir = (dragon.targetPlayer.position - dragon.transform.position).normalized;
+        dir.y = 0;
+        if (dir != Vector3.zero)
+        {
+            Quaternion targetRot = Quaternion.LookRotation(dir);
+            dragon.transform.rotation = Quaternion.Slerp(dragon.transform.rotation, targetRot, Time.deltaTime * 5.0f);
         }
     }
 
@@ -86,45 +98,31 @@ public class DragonCombatState : BossStateBase
                 dragon.ShootFireball();
                 attackEndTime = Time.time + 1.5f;
             }
-            else if (dist > 7.0f)
+            else if (dist > 8.0f)
             {
                 if (absAngle <= dragon.angleFrontWide)
                 {
-                    //50%
-                    int rand = Random.Range(0, 2);
-                    if (rand == 0)
-                    {
-                        dragon.PlayAnimTrigger("Fire Head 2");
-                        attackEndTime = Time.time + 3.0f;
-                    }
-                    else
-                    {
-                        isAttacking = false;
-                        stateMachine.ChangeState(new DragonChaseState(dragon, stateMachine));
-                    }
+                    dragon.PlayAnimCrossFade("Fire Head 2", 0.1f);
+                    attackEndTime = Time.time + 3.0f;
                 }
                 else
                 {
-                    //정면 근접
-                    if (absAngle <= dragon.angleFrontWide)
-                    {
-                        int rand = Random.Range(0, 2);
-                        if (rand == 0)
-                        {
-                            dragon.PlayAnimTrigger("Attack1");
-                            attackEndTime = Time.time + 1.2f;
-                        }
-                        else
-                        {
-                            dragon.PlayAnimTrigger("Attack2");
-                            attackEndTime = Time.time + 1.2f;
-                        }
-                    }
-                    else
-                    {
-                        isAttacking = false;
-                        stateMachine.ChangeState(new DragonChaseState(dragon, stateMachine));
-                    }
+                    isAttacking = false;
+                    stateMachine.ChangeState(new DragonChaseState(dragon, stateMachine));
+                }
+            }
+            else
+            {
+                int rand = Random.Range(0, 2);
+                if (rand == 0)
+                {
+                    dragon.PlayAnimCrossFade("Attack1", 0.1f);
+                    attackEndTime = Time.time + 1.2f;
+                }
+                else
+                {
+                    dragon.PlayAnimCrossFade("Attack2", 0.1f);
+                    attackEndTime = Time.time + 1.2f;
                 }
             }
         }

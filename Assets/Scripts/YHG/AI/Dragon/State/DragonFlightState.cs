@@ -103,9 +103,21 @@ public class DragonFlightState : BossStateBase
 
         Vector3 dir = dragon.transform.forward;
 
+        if (dragon.targetPlayer != null)
+        {
+            Vector3 playerDir = dragon.targetPlayer.position - dragon.transform.position;
+            playerDir.y = 0; 
+
+            if (playerDir != Vector3.zero)
+            {
+                dir = playerDir.normalized;
+            }
+        }
+
+        dragon.transform.rotation = Quaternion.LookRotation(dir);
+
         targetPos = dragon.transform.position + (dir * dragon.flightDistance);
 
-        //현재 떠있는 높이 유지
         targetPos.y = dragon.transform.position.y;
     }
 

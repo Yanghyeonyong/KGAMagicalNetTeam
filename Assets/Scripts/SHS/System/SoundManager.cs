@@ -222,8 +222,6 @@ public class SoundManager : SingletonForSoundManager<SoundManager>
                     sfxList.RemoveAt(i);
                 }
             }
-
-            Debug.Log("코루틴 도는중");
             yield return CoroutineManager.waitForSeconds(0.5f);
         }
 

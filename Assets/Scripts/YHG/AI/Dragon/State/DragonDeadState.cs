@@ -10,11 +10,12 @@ public class DragonDeadState : BossStateBase
 
     public override void Enter()
     {
-        if (dragon.agent != null)
+        if (dragon.agent != null && dragon.agent.isOnNavMesh)
         {
             dragon.agent.isStopped = true;
-            dragon.agent.enabled = false;
         }
+
+        dragon.agent.enabled = false;
 
         dragon.DisableWeaponHitbox();
 

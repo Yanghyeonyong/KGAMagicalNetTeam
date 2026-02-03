@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class DragonChaseState : BossStateBase
 {
-
+    private float stuckCheckTimer = 0f;
+    private float stuckCheckInterval = 1.0f;
     public DragonChaseState(DragonAI dragon, StateMachine stateMachine) : base(dragon, stateMachine) { }
 
     public override void Enter()
@@ -37,15 +38,26 @@ public class DragonChaseState : BossStateBase
         if (dist <= dragon.attackRange)
         {
             stateMachine.ChangeState(new DragonCombatState(dragon, stateMachine));
+            return;
+        }
+
+        stuckCheckTimer += Time.deltaTime;
+        if (stuckCheckTimer >= stuckCheckInterval)
+        {
+            stuckCheckTimer = 0f;
+
+            if (Physics.CheckSphere(dragon.transform.position, 6.0f, LayerMask.GetMask("Player")))
+            {
+                stateMachine.ChangeState(new DragonCombatState(dragon, stateMachine));
+                return;
+            }
         }
         if (dragon.agent != null && dragon.agent.enabled)
         {
             //계속 추격
-            if (dragon.agent != null)
-            {
-                dragon.agent.SetDestination(dragon.targetPlayer.position);
-            }
+            dragon.agent.SetDestination(dragon.targetPlayer.position);
         }
+
     }
 
     public override void Exit() { }
