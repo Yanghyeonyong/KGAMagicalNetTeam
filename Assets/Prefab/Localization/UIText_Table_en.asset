@@ -238,6 +238,26 @@ MonoBehaviour:
     m_Localized: Pink
     m_Metadata:
       m_Items: []
+  - m_Id: 6521783556845568
+    m_Localized: Back To Lobby
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6522707188723712
+    m_Localized: Ready
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6523131643899904
+    m_Localized: Private Room
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6523132910579712
+    m_Localized: Friendly Fire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6524761374273536
+    m_Localized: Frying Pan (Probably)
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

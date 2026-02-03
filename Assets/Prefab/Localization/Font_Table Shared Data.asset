@@ -175,6 +175,46 @@ MonoBehaviour:
     m_Key: Lobby/Canvas/RefreshButton/Text (TMP) 1
     m_Metadata:
       m_Items: []
+  - m_Id: 6521367326699520
+    m_Key: Room_new/Canvas/RoomTab/ReturnToLobbyButton/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6521367498665984
+    m_Key: Room_new/Canvas/RoomTab/ReturnToLobbyButton/Text (TMP) 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6521635317559296
+    m_Key: Room_new/Canvas/RoomTab/StartButton/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6521635338530816
+    m_Key: Room_new/Canvas/RoomTab/StartButton/Text (TMP) 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6522198855856128
+    m_Key: Room_new/Canvas/RoomTab/ReadyButton/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6522198876827648
+    m_Key: Room_new/Canvas/RoomTab/ReadyButton/Text (TMP) 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6522889833885696
+    m_Key: Room_new/Canvas/RoomTab/CheckHidden/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6522889854857216
+    m_Key: Room_new/Canvas/RoomTab/CheckHidden/Text (TMP) 1
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6522962500202496
+    m_Key: Room_new/Canvas/RoomTab/FriendlyFire/Text (TMP)
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6522962525368320
+    m_Key: Room_new/Canvas/RoomTab/FriendlyFire/Text (TMP) 1
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items:
     - rid: 579319845140562010
@@ -275,6 +315,26 @@ MonoBehaviour:
           - ko
           - ja
           - en
+        - m_KeyId: 6521367326699520
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6521635317559296
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6522198855856128
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6522889833885696
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6522962500202496
+          m_TableCodes:
+          - ko
+          - ja
         m_TypeString: TMPro.TMP_FontAsset, Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
     - rid: 579319845140562011
@@ -364,5 +424,25 @@ MonoBehaviour:
           - ko
           - ja
           - en
+        - m_KeyId: 6521367498665984
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6521635338530816
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6522198876827648
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6522889854857216
+          m_TableCodes:
+          - ko
+          - ja
+        - m_KeyId: 6522962525368320
+          m_TableCodes:
+          - ko
+          - ja
         m_TypeString: UnityEngine.Material, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
