@@ -19,6 +19,12 @@ public class Fireball : MonoBehaviourPun
 
     Rigidbody rb;
 
+    [PunRPC]
+    public void RPC_Setup(int shooterID)
+    {
+        this.shooterActorNumber = shooterID;
+    }
+
     private void Start()
     {
         //2601213 양현용 : 파이어볼 소환 사운드 추가
@@ -81,12 +87,12 @@ public class Fireball : MonoBehaviourPun
         hasExploded = true;
 
         // 모든 클라이언트에서 폭발 실행
-        photonView.RPC(nameof(RPC_ExplodeProcess), RpcTarget.All, transform.position);
+        photonView.RPC(nameof(RPC_ExplodeProcess), RpcTarget.All, transform.position, shooterActorNumber);
         PhotonNetwork.Destroy(gameObject);
     }
 
     [PunRPC]
-    private void RPC_ExplodeProcess(Vector3 explosionPos)
+    private void RPC_ExplodeProcess(Vector3 explosionPos, int attackerID)
     {
         //2601213 양현용 : 파이어볼 소환 사운드 추가
         SoundManager.Instance.PlaySFX(fireballData.explosionSound, 1f, 100f, gameObject.transform.position);
@@ -112,7 +118,7 @@ public class Fireball : MonoBehaviourPun
 
             if (targetComponent != null)
             {
-                targetComponent.OnMagicInteract(gameObject, fireballData, shooterActorNumber);
+                targetComponent.OnMagicInteract(gameObject, fireballData, attackerID);
             }
             else
             {
@@ -123,12 +129,5 @@ public class Fireball : MonoBehaviourPun
                 }
             }
         }
-    }
-
-    
-
-    public void SetShooterActorNumber(int actorNumber)
-    {
-        shooterActorNumber = actorNumber;
     }
 }

@@ -23,7 +23,7 @@ public class MagicFireball : MagicAction
             Fireball fireball = obj.GetComponent<Fireball>();
             if (fireball != null)
             {
-                fireball.SetShooterActorNumber(shooterID);
+                fireball.photonView.RPC(nameof(Fireball.RPC_Setup), RpcTarget.All, shooterID);
             }
         }
     }
