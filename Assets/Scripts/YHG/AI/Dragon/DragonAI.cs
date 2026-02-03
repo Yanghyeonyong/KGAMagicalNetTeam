@@ -53,7 +53,7 @@ public class DragonAI : MonoBehaviourPunCallbacks, IDamageable, IMagicInteractab
     public float angleFrontWide = 90.0f;
 
     [Tooltip("꼬리치기 각도")]
-    public float angleBackTail = 90.0f; // 90이면 90도~180도(완전 뒤) = 후방 180도
+    public float angleBackTail = 90.0f; 
 
     [Tooltip("파이어볼 거리")]
     public float distLongRange = 13.0f;
@@ -63,12 +63,8 @@ public class DragonAI : MonoBehaviourPunCallbacks, IDamageable, IMagicInteractab
 
 
     [Header("오디오 클립")]
-    public AudioClip hitSound;    // 피격 사운드            Death
-    public AudioClip breathSound; // 브레스 공격 사운드     Breath
-    public AudioClip phase1Sound; // 죽음을 머시깽
-    public AudioClip phase2Sound; // 갈
-    public AudioClip deathSound;  // 사망 사운드
-    public AudioClip biteSound;   // 물기 사운드
+    public AudioClip hitSound;    //피격
+    public AudioClip flightChargeSound; //데스윙용
 
     private void Awake()
     {
@@ -152,7 +148,6 @@ public class DragonAI : MonoBehaviourPunCallbacks, IDamageable, IMagicInteractab
     public void TakeDamage(float damage)
     {
         if (currentHP <= 0) return;
-        SoundManager.Instance.PlaySFX(hitSound, 1f, 100f, transform.position);
         photonView.RPC(nameof(RpcSyncHP), RpcTarget.All, damage);
     }
 
@@ -160,8 +155,10 @@ public class DragonAI : MonoBehaviourPunCallbacks, IDamageable, IMagicInteractab
     void RpcSyncHP(float damage)
     {
         currentHP -= damage;
-        //보스체력바 갱신 로직~~
-        //없어도 되긴 함(2페 떄문에)
+        if (hitSound != null)
+        {
+            SoundManager.Instance.PlaySFX(hitSound, 1.0f, soundMaxDistance, transform.position);
+        }
 
         //방장만 상태 판단
         if (PhotonNetwork.IsMasterClient)

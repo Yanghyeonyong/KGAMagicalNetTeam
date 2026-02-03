@@ -119,6 +119,11 @@ public class DragonFlightState : BossStateBase
         targetPos = dragon.transform.position + (dir * dragon.flightDistance);
 
         targetPos.y = dragon.transform.position.y;
+
+        if (dragon.flightChargeSound != null)
+        {
+            dragon.PlayAudio(dragon.flightChargeSound);
+        }
     }
 
     private void HandleFlight()
