@@ -4,14 +4,21 @@ using UnityEngine;
 using UnityEngine.AI;
 
 //데스윙
+//2.3 이륙 돌진 착륙 순서로 변경
 public class DragonFlightState : BossStateBase
 {
-    private Vector3 targetPos;      //돌진 지점
-
-    private float flightSpeed = 10.0f; //돌진 속도
-
-    private float maxFlightDuration = 4.0f; //시간
+    private Vector3 targetPos;      //돌진 지
+    private float flightSpeed = 15.0f; //돌진 속도
+    private float maxFlightDuration = 3.0f; //시간
     private float flightTimer = 0f;
+
+    // === 이륙(Take off) 설정 [추가됨] ===
+    private bool isTakingOff = false;       //이륙 중
+    private float takeOffDuration = 2.0f;   //시간
+    private float takeOffTimer = 0f;
+    private float riseHeight = 2f;        //높이
+    private Vector3 startGroundPos;         //이륙 시작점
+
 
     //장판
     private float fireDropTimer = 0f; 
@@ -19,7 +26,7 @@ public class DragonFlightState : BossStateBase
     private string fireZonePrefabName = "EffectPrefab/DragonFireZone";
 
     //몸박
-    private float chargeDamage = 300f;
+    private float chargeDamage = 14f;
     private HashSet<int> hitPlayerIDs = new HashSet<int>();
 
     public DragonFlightState(DragonAI dragon, StateMachine stateMachine) 
@@ -30,23 +37,19 @@ public class DragonFlightState : BossStateBase
         if (dragon.agent != null)
         {
             dragon.agent.isStopped = true;
+            dragon.agent.updatePosition = false;
+            dragon.agent.updateRotation = false;
             dragon.agent.enabled = false;
         }
 
-        //목표 설정
-        Vector3 dir = dragon.transform.forward;
-        if (dragon.targetPlayer != null)
-        {
-            dir = (dragon.targetPlayer.position - dragon.transform.position).normalized;
-        }
+        //이륙 초기화
+        isTakingOff = true;
+        takeOffTimer = 0f;
+        startGroundPos = dragon.transform.position; //현재 바닥 위치 기준점 잡기
 
-        targetPos = dragon.transform.position + (dir * dragon.flightDistance);
-        targetPos.y = dragon.transform.position.y;
+        dragon.PlayAnimTrigger("Fly Idle");
 
-        dragon.PlayAnimTrigger("Fly Glide");
         dragon.DisableWeaponHitbox();
-
-        //피격 리스트 초기화
         hitPlayerIDs.Clear();
         flightTimer = 0f;
         fireDropTimer = 0f;
@@ -54,33 +57,89 @@ public class DragonFlightState : BossStateBase
 
     public override void Execute()
     {
-        //시간체크
+
+        if (isTakingOff)
+        {
+            HandleTakeOff();
+        }
+        else
+        {
+            HandleFlight();
+        }
+    }
+
+    //수직상승
+    private void HandleTakeOff()
+    {
+        takeOffTimer += Time.deltaTime;
+
+        float progress = takeOffTimer / takeOffDuration;
+        Vector3 airPos = startGroundPos + Vector3.up * riseHeight;
+        dragon.transform.position = Vector3.Lerp(startGroundPos, airPos, progress);
+
+        //플레이어 바라보기
+        if (dragon.targetPlayer != null)
+        {
+            Vector3 lookDir = dragon.targetPlayer.position - dragon.transform.position;
+            lookDir.y = 0; 
+            if (lookDir != Vector3.zero)
+            {
+                Quaternion targetRot = Quaternion.LookRotation(lookDir);
+                dragon.transform.rotation = Quaternion.Slerp(dragon.transform.rotation, targetRot, Time.deltaTime * 5f);
+            }
+        }
+
+        //이륙 시간 종료 후 돌진 목표 설정
+        if (takeOffTimer >= takeOffDuration)
+        {
+            isTakingOff = false;
+            CalculateChargeTarget(); 
+        }
+    }
+
+    //돌진 목표 계산
+    private void CalculateChargeTarget()
+    {
+        flightTimer = 0f;
+        fireDropTimer = 0f;
+
+        Vector3 dir = dragon.transform.forward;
+
+        targetPos = dragon.transform.position + (dir * dragon.flightDistance);
+
+        //현재 떠있는 높이 유지
+        targetPos.y = dragon.transform.position.y;
+    }
+
+    private void HandleFlight()
+    {
         flightTimer += Time.deltaTime;
+
         if (flightTimer >= maxFlightDuration)
         {
             StartLanding();
             return;
         }
 
-        //이동
-        Vector3 prevPos = dragon.transform.position;
+        // 이동
         float step = flightSpeed * Time.deltaTime;
+        Vector3 prevPos = dragon.transform.position;
         dragon.transform.position = Vector3.MoveTowards(dragon.transform.position, targetPos, step);
+
         dragon.transform.LookAt(targetPos);
 
-        //충돌
+        //충돌 체크
         CheckSweptCollision(prevPos, dragon.transform.position);
-
-        //장판 생성
+        //확인해봐야함
         SpawnFireZone();
 
-        //도착 체크
+        //도달 체크
         if (Vector3.Distance(dragon.transform.position, targetPos) < 1.0f)
         {
             StartLanding();
         }
-
     }
+
 
     //몸박체크
     private void CheckSweptCollision(Vector3 startPos, Vector3 endPos)
@@ -159,12 +218,13 @@ public class DragonFlightState : BossStateBase
     {
         if (dragon.agent != null)
         {
-            dragon.agent.enabled = true;
+            dragon.agent.enabled = true;        
+            dragon.agent.Warp(dragon.transform.position); 
+            dragon.agent.updatePosition = true; 
+            dragon.agent.updateRotation = true;
             dragon.agent.isStopped = false;
         }
 
         hitPlayerIDs.Clear();
     }
-
-
 }

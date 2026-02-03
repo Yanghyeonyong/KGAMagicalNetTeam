@@ -7,6 +7,10 @@ public class DragonAI : MonoBehaviourPunCallbacks, IDamageable, IMagicInteractab
 {
     public StateMachine stateMachine;
 
+    //파이어볼
+    public MagicDataSO fireballMagicData; 
+    public Transform mouthPos; 
+
     //가장 가까운?
     public Transform targetPlayer;
 
@@ -35,7 +39,7 @@ public class DragonAI : MonoBehaviourPunCallbacks, IDamageable, IMagicInteractab
     public ParticleSystem breathEffect; 
 
     [Header("데스윙")]
-    public float bodyCrashRadius = 5.0f;
+    public float bodyCrashRadius = 6.0f;
     public float flightDistance = 40.0f;
 
     [Header("전투 설정")]
@@ -48,11 +52,11 @@ public class DragonAI : MonoBehaviourPunCallbacks, IDamageable, IMagicInteractab
     [Tooltip("꼬리치기 각도")]
     public float angleBackTail = 90.0f; // 90이면 90도~180도(완전 뒤) = 후방 180도
 
-    [Tooltip("직선 브레스 거리")]
-    public float distLongRange = 15.0f;
+    [Tooltip("파이어볼 거리")]
+    public float distLongRange = 13.0f;
 
     [Tooltip("전투 이탈")]
-    public float distCombatExit = 25.0f;
+    public float distCombatExit = 20.0f;
 
 
     private void Awake()
@@ -212,9 +216,27 @@ public class DragonAI : MonoBehaviourPunCallbacks, IDamageable, IMagicInteractab
         {
             var emission = breathEffect.emission;
             emission.enabled = false;
+            breathEffect.Stop();
         }
     }
+    public void ShootFireball()
+    {
+        if (fireballMagicData == null || mouthPos == null) return;
 
+        ActionBase action = fireballMagicData.CreateInstance();
+        MagicAction magicAction = action as MagicAction;
+
+        if (magicAction != null)
+        {
+            Vector3 targetPos = transform.position + transform.forward * 50f;
+            if (targetPlayer != null)
+            {
+                targetPos = targetPlayer.position;
+            }
+
+            magicAction.OnCast(mouthPos.position, targetPos, false, 0);
+        }
+    }
 
     private void OnDrawGizmosSelected()
     {

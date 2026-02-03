@@ -348,6 +348,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 643046528459195270}
   m_LocalEulerAnglesHint: {x: 3.1284091, y: 164.61662, z: -19.888832}
+--- !u!1 &823875841608577597
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1868594547279510943}
+  m_Layer: 7
+  m_Name: MouthPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1868594547279510943
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823875841608577597}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -0.155, y: -4.41, z: 2.14}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1400793221264260812}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &901117422688112847
 GameObject:
   m_ObjectHideFlags: 0
@@ -7245,6 +7276,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1868594547279510943}
   - {fileID: 820120409906901255}
   - {fileID: 73482490872783653}
   - {fileID: 8981824214143200373}
@@ -18416,8 +18448,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3bf66248d907f748ba740509e1df3c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DragonAI
+  fireballMagicData: {fileID: 11400000, guid: 22e929b5bcc3f4f48bb0640059ecea69, type: 2}
+  mouthPos: {fileID: 1868594547279510943}
   targetPlayer: {fileID: 0}
-  attackRange: 10
+  attackRange: 8
   maxHP: 500
   currentHP: 0
   isPhaseTwo: 0
@@ -18432,7 +18466,7 @@ MonoBehaviour:
   breathWeapon: {fileID: 9050411429804258641}
   breathEffect: {fileID: 2842497724022854217}
   bodyCrashRadius: 4.5
-  flightDistance: 40
+  flightDistance: 20
   angleFrontNarrow: 30
   angleFrontWide: 90
   angleBackTail: 90

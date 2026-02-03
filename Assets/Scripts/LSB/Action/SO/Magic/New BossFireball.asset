@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8dc1665b38063a43a26294fe1bd56d3, type: 3}
+  m_Name: New BossFireball
+  m_EditorClassIdentifier: Assembly-CSharp::Fireball
+  itemId: 1001
+  itemName: Fireball
+  itemImage: {fileID: 695775810, guid: 080cb6d98b00c2645b2c41df5f69bc78, type: 3}
+  itemPrefab: {fileID: 463702073341317402, guid: be79f0b4e7b2c7b48a648ba14f7f6dcf, type: 3}
+  description: 
+  cooldown: 1
+  isDisposable: 0
+  damage: 5
+  knockbackForce: 30
+  radius: 5
+  forceUpward: 0
+  spawnOffset: {x: 0, y: 0, z: 0}
+  magicSound: {fileID: 8300000, guid: 5b6935c78d4a801438cc45ac1a8b4680, type: 3}
+  magicType: 1
+  speed: 80
+  startSpeedMul: 0.2
+  maxSpeedMul: 3
+  accelerationTime: 2
+  explosionEffectPrefab: {fileID: 1879798220002124, guid: 68db1ff198511d04eb170d58b7930744, type: 3}
+  explosionSound: {fileID: 8300000, guid: 34a1e0dd450b03343bb4fd0fcefccce7, type: 3}
+  explosionLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  debuffInfo:
+    Type: 5
+    Duration: 5
+    Value: 5
+    VisualPrefab: {fileID: 1986202770299390, guid: 167e663a5fb66bb42a555a0fea27b834, type: 3}
+    PolymorphPrefabs: []
+    ExecutionAnimator: {fileID: 0}
