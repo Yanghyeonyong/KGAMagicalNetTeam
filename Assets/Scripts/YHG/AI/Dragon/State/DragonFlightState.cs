@@ -15,7 +15,7 @@ public class DragonFlightState : BossStateBase
     private bool isTakingOff = false;       //이륙 중
     private float takeOffDuration = 2.0f;   //시간
     private float takeOffTimer = 0f;
-    private float riseHeight = 2f;        //높이
+    private float riseHeight = 3f;        //높이
     private Vector3 startGroundPos;         //이륙 시작점
 
 

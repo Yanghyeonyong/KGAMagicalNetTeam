@@ -12,6 +12,9 @@ public class BossRaidManager : MonoBehaviourPunCallbacks
     public Transform[] playerTeleportPoints; 
     public DragonAI bossAI;
 
+    [Header("종료 세팅")]
+    public Transform[] rewardPoints;
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -49,30 +52,38 @@ public class BossRaidManager : MonoBehaviourPunCallbacks
     private void TeleportLocalPlayer()
     {
         GameObject myPlayer = GetLocalPlayerObject();
-        if (myPlayer != null)
+        if (myPlayer != null && playerTeleportPoints != null && playerTeleportPoints.Length > 0)
         {
-            Player[] players = PhotonNetwork.PlayerList;
 
-            //ActorNumber순 정렬
-            Array.Sort(players, (p1, p2) => p1.ActorNumber.CompareTo(p2.ActorNumber));
+            Rigidbody rb = myPlayer.GetComponent<Rigidbody>();
+            if (rb != null) rb.linearVelocity = Vector3.zero;
 
-            int myIndex = 0;
-            for (int i = 0; i < players.Length; i++)
-            {
-                if (players[i].IsLocal)
-                {
-                    myIndex = i;
-                    break;
-                }
-            }
-
-            //포인트 개수보다 사람이 많으면? 대비
-            int pointIndex = myIndex % playerTeleportPoints.Length;
+            int pointIndex = GetPlayerIndex(playerTeleportPoints.Length);
 
             myPlayer.transform.position = playerTeleportPoints[pointIndex].position;
             myPlayer.transform.rotation = playerTeleportPoints[pointIndex].rotation;
         }
     }
+
+    private int GetPlayerIndex(int maxPoints)
+    {
+        Player[] players = PhotonNetwork.PlayerList;
+
+        Array.Sort(players, (p1, p2) => p1.ActorNumber.CompareTo(p2.ActorNumber));
+
+        int myIndex = 0;
+        for (int i = 0; i < players.Length; i++)
+        {
+            if (players[i].IsLocal)
+            {
+                myIndex = i;
+                break;
+            }
+        }
+        //안전장치로 나누기연산
+        return myIndex % maxPoints;
+    }
+
 
     private GameObject GetLocalPlayerObject()
     {
@@ -87,4 +98,34 @@ public class BossRaidManager : MonoBehaviourPunCallbacks
         }
         return null;
     }
+
+
+    //사망RPC
+    public void OnBossDefeated()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            photonView.RPC(nameof(RpcTeleportToReward), RpcTarget.All);
+        }
+    }
+
+    [PunRPC]
+    public void RpcTeleportToReward()
+    {
+        GameObject myPlayer = GetLocalPlayerObject();
+
+        if (myPlayer != null && rewardPoints != null)
+        {
+            Rigidbody rb = myPlayer.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+            }
+            int pointIndex = GetPlayerIndex(rewardPoints.Length);
+            myPlayer.transform.position = rewardPoints[pointIndex].position;
+            myPlayer.transform.rotation = rewardPoints[pointIndex].rotation;
+        }
+    }
+
 }
