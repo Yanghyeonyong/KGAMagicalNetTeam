@@ -59,6 +59,14 @@ public class DragonAI : MonoBehaviourPunCallbacks, IDamageable, IMagicInteractab
     public float distCombatExit = 20.0f;
 
 
+    [Header("오디오 클립")]
+    public AudioClip hitSound;    // 피격 사운드            Death
+    public AudioClip breathSound; // 브레스 공격 사운드     Breath
+    public AudioClip phase1Sound; // 죽음을 머시깽
+    public AudioClip phase2Sound; // 갈
+    public AudioClip deathSound;  // 사망 사운드
+    public AudioClip biteSound;   // 물기 사운드
+
     private void Awake()
     {
         stateMachine = new StateMachine();
@@ -141,6 +149,7 @@ public class DragonAI : MonoBehaviourPunCallbacks, IDamageable, IMagicInteractab
     public void TakeDamage(float damage)
     {
         if (currentHP <= 0) return;
+        SoundManager.Instance.PlaySFX(hitSound, 1f, 100f, transform.position);
         photonView.RPC(nameof(RpcSyncHP), RpcTarget.All, damage);
     }
 
