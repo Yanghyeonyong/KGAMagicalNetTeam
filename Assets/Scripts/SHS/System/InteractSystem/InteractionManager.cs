@@ -1,0 +1,162 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.Playables;
+using UnityEngine.Timeline;
+
+/// <summary>
+/// 상호작용을 관리할 중간 매개체 매니저
+/// </summary>
+public class InteractionManager : MonoBehaviour
+{
+    [SerializeField] private PlayableDirector pd;
+
+    private IInteract executer;
+    private List<IInteract> receivers = new List<IInteract>();
+
+    private BaseInteractSystem interactSystem;      // 상호작용 클래스 캐싱
+
+    private Dictionary<InteractionType, BaseInteractSystem> interactSystemDic = new Dictionary<InteractionType, BaseInteractSystem>();
+
+    public void RequestInteraction(bool isMine, IInteract executer, params IInteract[] receivers)
+    {
+        if (executer == null || receivers == null) return;
+
+        Debug.Log(isMine);
+
+        InteractionDataSO data = receivers[0].interactionData;
+
+        if (!interactSystemDic.ContainsKey(data.type))
+        {
+            BaseInteractSystem newSystem = null;
+
+            switch (data.type)
+            {
+                case InteractionType.Assassinate:
+                    newSystem = new AssassinateInteract(data, executer, receivers);
+                    break;
+            }
+
+            interactSystemDic.Add(data.type, newSystem);
+        }
+        else
+        {
+            interactSystemDic[data.type].Init(data, executer, receivers);
+        }
+
+        interactSystem = interactSystemDic[data.type];
+
+        this.executer = executer;
+        this.receivers = receivers.ToList();
+
+        TimelineSetting(data, isMine, executer, receivers);
+
+        Play(isMine);
+    }
+
+    // 타임라인 포지션 등 세팅
+    private void TimelineSetting(InteractionDataSO data, bool isMine, IInteract executer, params IInteract[] receivers)
+    {
+        if (data == null) return;
+        if (ProjectManager.Instance == null || ProjectManager.Instance.CinemachineControl == null) return;
+
+        pd.playableAsset = data.timelineAsset;
+
+        var tracks = data.timelineAsset.GetOutputTracks().ToArray();
+        SetTrackValue(data, isMine, tracks, executer, receivers);
+        SetTransform(data, isMine, executer, receivers);
+    }
+
+    private void Play(bool isMine)
+    {
+        if(isMine)
+            ProjectManager.Instance.CinemachineControl.SetCameraType(Cinemachinetype.CutScene);
+
+        interactSystem.PlayInteract();
+        pd.stopped += Stop;
+
+        pd.Play();
+    }
+
+    private void Stop(PlayableDirector pd)
+    {
+        if(ProjectManager.Instance != null)
+            ProjectManager.Instance.CinemachineControl.SetCameraType(Cinemachinetype.InGame);
+        interactSystem.EndInteract();
+        pd.playableAsset = null;
+    }
+
+    // 트랙에 맞게 매칭
+    private void SetTrackValue(InteractionDataSO data, bool isMine, TrackAsset[] tracks, IInteract executer, params IInteract[] receivers)
+    {
+        if (isMine)
+        {
+            pd.SetGenericBinding(tracks[Array.FindIndex(tracks, x => x.name.StartsWith("Camera"))], ProjectManager.Instance.CinemachineControl.cutSceneCamera.GetComponent<Animator>());
+        }
+
+        pd.SetGenericBinding(tracks[Array.FindIndex(tracks, x => x.name.StartsWith("Executer"))], executer.ActorTrans.gameObject);
+
+        for (int i = 0; i < data.offset_Receiver.Count; i++)
+        {
+            TrackAsset track = tracks[Array.FindIndex(tracks, x => x.name == data.offset_Receiver[i].name)];
+
+            pd.SetGenericBinding(track, receivers[i].ActorTrans.gameObject);
+        }
+
+        foreach (var track in tracks)
+        {
+            if (track is SignalTrack signalTrack)
+            {
+                pd.SetGenericBinding(signalTrack, ProjectManager.Instance.CinemachineControl.cutSceneCamera.GetComponent<SignalReceiver>());
+            }
+        }
+    }
+
+    // 기준 트랜스폼에 맞게 나머지 트랙들의 오브젝트 트랜스폼도 반영
+    private void SetTransform(InteractionDataSO data, bool isMine, IInteract executer, params IInteract[] receivers)
+    {
+        // 누가 기준 트랜스폼인지에 따라 위치 보정
+        Transform pivotTrans;
+
+        if (data.isExecuterPivot)
+        {
+            // 상호작용 호출자가 기준일 때
+            pivotTrans = executer.ActorTrans;
+        }
+        else
+        {
+            // 상호작용 수신자가 기준일 때
+            int index = 0;
+
+            if (receivers.Length > data.receiverPivotIndex)
+            {
+                index = data.receiverPivotIndex;
+            }
+
+            pivotTrans = receivers[index].ActorTrans;
+        }
+
+        // 기준 트랜스폼을 기준으로 실제 위치, 회전값 적용
+        if (data.offset_Executer.isApply)
+        {
+            executer.ActorTrans.root.position = pivotTrans.TransformPoint(data.offset_Executer.position);
+            executer.ActorTrans.root.rotation = Quaternion.Euler(pivotTrans.eulerAngles + data.offset_Executer.rotation);
+        }
+
+        if (isMine && data.offset_Camera.isApply)
+        {
+            ProjectManager.Instance.CinemachineControl.cutSceneCamera.transform.position = pivotTrans.TransformPoint(data.offset_Camera.position);
+            ProjectManager.Instance.CinemachineControl.cutSceneCamera.transform.rotation = Quaternion.Euler(pivotTrans.eulerAngles + data.offset_Camera.rotation);
+        }
+
+        for (int i = 0; i < data.offset_Receiver.Count; i++)
+        {
+            if (data.offset_Receiver[i].isApply == false) continue;
+
+            // 트랜스폼 변경
+            receivers[i].ActorTrans.root.position = pivotTrans.TransformPoint(data.offset_Receiver[i].position);
+            receivers[i].ActorTrans.root.rotation = Quaternion.Euler(pivotTrans.eulerAngles + data.offset_Receiver[i].rotation);
+        }
+    }
+}

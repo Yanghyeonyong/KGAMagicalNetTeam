@@ -1,0 +1,316 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: UIText_Table Shared Data
+  m_EditorClassIdentifier: Unity.Localization::UnityEngine.Localization.Tables.SharedTableData
+  m_TableCollectionName: UIText_Table
+  m_TableCollectionNameGuidString: f49f87b47a53af64794a237b74e76e2c
+  m_Entries:
+  - m_Id: 10149507072
+    m_Key: StartGame
+    m_Metadata:
+      m_Items: []
+  - m_Id: 12020166656
+    m_Key: Control
+    m_Metadata:
+      m_Items: []
+  - m_Id: 13597224960
+    m_Key: Option
+    m_Metadata:
+      m_Items: []
+  - m_Id: 15002316800
+    m_Key: Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6112689998082048
+    m_Key: ControlGuide_Move
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6112763050274816
+    m_Key: ControlGuide_Run
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6112788341927936
+    m_Key: ControlGuide_Walk
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6112804926205952
+    m_Key: ControlGuide_Jump
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6112843480248320
+    m_Key: ControlGuide_Roll
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6112868629295104
+    m_Key: ControlGuide_HandAction
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6112929836773376
+    m_Key: ControlGuide_Interact
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6112948379791360
+    m_Key: ControlGuide_Option
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6113002981240832
+    m_Key: ControlGuide_Chat
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6113035801669632
+    m_Key: ControlGuide_Transformation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6113061047185408
+    m_Key: ControlGuide_Inventory
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6113095671164928
+    m_Key: ControlGuide_RoomSetting
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6236874422431744
+    m_Key: Setting_BGM
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6236965371719680
+    m_Key: Setting_SFX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6236999735652352
+    m_Key: Setting_VoiceListen
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237019566321664
+    m_Key: Setting_VoiceSpeak
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237053062033408
+    m_Key: Setting_Sensitivity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237102122807296
+    m_Key: Setting_GraphicQuality
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237134993567744
+    m_Key: Setting_Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237150105645056
+    m_Key: Setting_InverseX
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237177687388160
+    m_Key: Setting_InverseY
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237195936804864
+    m_Key: Setting_Resolution
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6237215725531136
+    m_Key: Setting_ScreenMode
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6286397580587008
+    m_Key: Setting_QualityLow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6286466543333376
+    m_Key: Setting_QualityMiddle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6286492535435264
+    m_Key: Setting_QualityHigh
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6287662461038592
+    m_Key: Setting_Language_ko
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6287755587170304
+    m_Key: Setting_Language_en
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6287775182958592
+    m_Key: Setting_Language_ja
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6289993625841664
+    m_Key: Setting_ScreenMode_Full
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6290076610146304
+    m_Key: Setting_ScreenMode_Window
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6343091299889152
+    m_Key: Login_BackToMenu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6343154214449152
+    m_Key: Login_SignUp
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6343196866326528
+    m_Key: Login_Email
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6343217867206656
+    m_Key: Login_Password
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6343246396862464
+    m_Key: Login_Nickname
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345416626221056
+    m_Key: Lobby_Nickname
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345470325895168
+    m_Key: Lobby_SetNickname
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345530212167680
+    m_Key: Lobby_EnterRoomNum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345580770308096
+    m_Key: Lobby_EnterRoom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345598570934272
+    m_Key: Lobby_CreateRoomNum
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345618560987136
+    m_Key: Lobby_CreateRoom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345639276654592
+    m_Key: Lobby_QuickStart
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345673682530304
+    m_Key: Lobby_BackToLogin
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6345731509399552
+    m_Key: Lobby_Research
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6351981454372864
+    m_Key: 'Lobby_SetColor '
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6351986277822464
+    m_Key: Lobby_SetColor_Blue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6351988056207360
+    m_Key: Lobby_SetColor_Red
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6351989868146688
+    m_Key: Lobby_SetColor_Green
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6351991688474624
+    m_Key: Lobby_SetColor_Yellow
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6351993454276608
+    m_Key: Lobby_SetColor_Pink
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6521783556845568
+    m_Key: Room_BackToLobby
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6522707188723712
+    m_Key: Room_Ready
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6523131643899904
+    m_Key: Room_HideRoom
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6523132910579712
+    m_Key: Room_FriendlyFire
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6524761374273536
+    m_Key: Room_Frying Pan
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6526200360284160
+    m_Key: MapOne_Continue
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6526201245282304
+    m_Key: MapOne_Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6526202042200064
+    m_Key: MapOne_Guide
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6526202805563392
+    m_Key: MapOne_Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6527582744162304
+    m_Key: MapOne_Settings_Game
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6527625668669440
+    m_Key: MapOne_Settings_Graphic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6527626197151744
+    m_Key: MapOne_Settings_Audio
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6527626641747968
+    m_Key: MapOne_Settings_Close
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6638039475761152
+    m_Key: Lose_Master
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6638311883223040
+    m_Key: Lose_Guest
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6638327372787712
+    m_Key: Win_Master
+    m_Metadata:
+      m_Items: []
+  - m_Id: 6638351972380672
+    m_Key: Win_Guest
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 579319845140562008
+  references:
+    version: 2
+    RefIds:
+    - rid: 579319845140562008
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1768524174222
