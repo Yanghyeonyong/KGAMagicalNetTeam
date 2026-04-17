@@ -77,6 +77,16 @@ This codebase already behaves like a modular mediator/event hub in two places:
 
 ---
 
+
+## AI-Generated Documentation Disclaimer (Cursor)
+
+This `README.md` was generated with assistance from **Cursor AI**.
+
+- **Source of truth**: All technical claims (Unity version, packages, architecture notes, and any quantitative figures) are intended to be **traceable to files committed in this repository**.
+- **Verification required**: Treat performance numbers as **reproducible targets**, not guarantees, unless backed by committed profiler captures/benchmark logs.
+- **Scope**: Cursor AI did not execute the Unity project; it summarized and structured documentation from the repo contents at the time of generation.
+- **How to report issues**: If you find an incorrect claim, open an issue and reference the specific file/path that contradicts it.
+
 ## KO — KGAMagicalNetTeam (고성능 README)
 
 ### 이 프로젝트는 무엇인가요?
@@ -138,6 +148,14 @@ This codebase already behaves like a modular mediator/event hub in two places:
 - 캡처가 생기면 표를 **ms / GC alloc / bytes/sec** 중심으로 업데이트
 
 ---
+## AI 생성 문서 면책 문구 (Cursor)
+
+이 `README.md`는 **Cursor AI**의 도움을 받아 작성되었습니다.
+
+- **근거 우선**: Unity 버전/패키지/아키텍처/정량 수치 등 기술적 주장들은 **이 레포에 커밋된 파일**에서 추적 가능하도록 작성하는 것을 원칙으로 합니다.
+- **검증 필요**: 성능 수치는 커밋된 프로파일러 캡처/벤치마크 로그가 없는 한 **보장값이 아니라 재현 가능한 목표치**로 간주하세요.
+- **범위**: Cursor AI는 Unity 프로젝트를 실행하지 않았으며, 작성 시점의 레포 내용을 기반으로 요약·구성했습니다.
+- **오류 제보**: 내용이 틀렸다면 이슈를 생성하고, 반박 근거가 되는 파일/경로를 함께 첨부해 주세요.
 
 ## License / attribution
 TBD (라이선스를 여기에 추가하세요).
